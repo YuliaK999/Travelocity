@@ -52,7 +52,7 @@ public class FlightSearchStepDefs {
 		Assert.assertTrue(flightsPage.flightsText.getText().contains("Flights"));
 	}
 	
-	@When("I type a {word} into Flying from field")
+	@When("I type a keyword into Flying from field")
 	public void i_type_a_keyword_into_Flying_from_field() {
 		FlightsPage flightsPage = new FlightsPage();
 		keyword = flightsPage.generateKeyword();
@@ -86,6 +86,7 @@ public class FlightSearchStepDefs {
 	@When("I click on Search button")
 	public void i_click_on_Search_button() {
 		FlightsPage flightsPage = new FlightsPage();
+		BrowserUtilities.waitForClickablility(flightsPage.searchButton, 10);;
 		flightsPage.searchButton.click();
 	}
 
@@ -106,8 +107,11 @@ public class FlightSearchStepDefs {
 		BrowserUtilities.selectFromList(flightsPage.airportList, "Shanghai (PVG - Pudong Intl.)");
 		flightsPage.departingDate.click();
 		flightsPage.selectMonthYearDay("May", "2020", "25");
+		BrowserUtilities.waitFor(3);
 		flightsPage.returningDate.click();
-		flightsPage.selectMonthYearDay("Aug", "2020", "1");
+		BrowserUtilities.waitFor(3);
+		flightsPage.selectMonthYearDay("Sep", "2020", "15");
+		BrowserUtilities.waitFor(3);
 		BrowserUtilities.selectByVisibleText(flightsPage.adultsNumber, "2");
 		BrowserUtilities.selectByValue(flightsPage.childrenNumber,"1");
 		BrowserUtilities.selectByValue(flightsPage.childAge,"9");

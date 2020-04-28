@@ -27,15 +27,16 @@ Background:
 		And I click on Flights button
 		Then I should land on flights page
  
- @testing
+
   Scenario: Verify dropdown suggestions by keyword
-    When I type a {word} into Flying from field
+    When I type a keyword into Flying from field
     Then I should see suggested options in the dropdown
     
 	Scenario: Verify Clear button
-		When I type a {word} into Flying from field
+		When I type a keyword into Flying from field
 		And I click on Clear button
 		Then Flying from field should get cleared
+	
 		
  	Scenario: Verify error messages
 		When I click on Search button

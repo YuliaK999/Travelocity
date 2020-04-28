@@ -57,7 +57,7 @@ public class FlightsPage {
 	@FindBy (className = "multiLineDisplay details")
 	public List<WebElement> options;
 	
-	@FindBy (className = "alert-title no-outline")
+	@FindBy (xpath = "//h5[@class='alert-title no-outline']")
 	public WebElement errorMessage;
 	
 	@FindBy(xpath = "(//caption[@class='datepicker-cal-month-header'])[1]")
@@ -92,7 +92,7 @@ public class FlightsPage {
 		for (WebElement row : rows) {
 			List<WebElement> cells = row.findElements(By.tagName("td"));
 				for (WebElement cell : cells) {
-					if (cell.getText().contains(day)) {
+					if (cell.getText().equals(" "+day)) {
 						cell.click();
 						break;
 					}

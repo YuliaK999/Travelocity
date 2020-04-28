@@ -18,7 +18,7 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 					
 
 		tags = "@testing", // "@smoke and @test"
-		features = "src/test/resources/com/travelocity/features/searchFlights.feature",
+		features = "src/test/resources/com/travelocity/features",
 		glue = "com/travelocity/step_definitions"
 		,strict = true
 //		,dryRun = true
