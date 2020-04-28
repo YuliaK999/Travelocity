@@ -53,7 +53,7 @@ public class FlightSearchStepDefs {
 	}
 	
 	@When("I type a {word} into Flying from field")
-	public void i_type_a_keyword_into_Flying_from_field(String keyword) {
+	public void i_type_a_keyword_into_Flying_from_field() {
 		FlightsPage flightsPage = new FlightsPage();
 		keyword = flightsPage.generateKeyword();
 		flightsPage.flyingFromAirport.sendKeys(keyword);
@@ -86,9 +86,7 @@ public class FlightSearchStepDefs {
 	@When("I click on Search button")
 	public void i_click_on_Search_button() {
 		FlightsPage flightsPage = new FlightsPage();
-		JavascriptExecutor js= (JavascriptExecutor) Driver.getDriver();
-		js.executeScript("arguments[0].click();", flightsPage.searchButton);
-		
+		flightsPage.searchButton.click();
 	}
 
 	@Then("Error messages should be displayed")

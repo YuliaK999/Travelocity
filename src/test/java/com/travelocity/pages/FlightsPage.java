@@ -100,8 +100,7 @@ public class FlightsPage {
 			}
 	}
 	
-	//td[@class='dl-datepicker-current-day']//a[@class='dl-state-default'][contains(text(),'27')]
-	
+		
 	public String generateKeyword() {
 		String s = "gfk";
 		int n = 1 + (int)(Math.random()*11);//random number from 1 to 10 
