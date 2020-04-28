@@ -1,1 +1,13 @@
-2020-04-28 16:48:44 INFO  FlightSearchStepDefs:31 - Navigating to flights page
+2020-04-28 16:58:04 INFO  FlightSearchStepDefs:31 - Navigating to flights page
+2020-04-28 16:58:23 INFO  FlightSearchStepDefs:24 - Navigating to a TravelocityCom homepage
+2020-04-28 16:58:23 INFO  FlightSearchStepDefs:30 - Clicking on Hotels
+2020-04-28 16:58:29 INFO  FlightSearchStepDefs:170 - Clicking on guest field
+2020-04-28 16:58:34 INFO  FlightSearchStepDefs:178 - Clicking minus button to decrease the adult in first room
+2020-04-28 16:58:37 INFO  FlightSearchStepDefs:186 - Clicking plus button to increase the child in first room
+2020-04-28 16:58:40 INFO  FlightSearchStepDefs:194 - Selecting age of child in first room
+2020-04-28 16:58:43 INFO  FlightSearchStepDefs:202 - Clicking to add another room
+2020-04-28 16:58:46 INFO  FlightSearchStepDefs:210 - Clicking plus button to increase the adult in second room
+2020-04-28 16:58:50 INFO  FlightSearchStepDefs:213 - Scroll down
+2020-04-28 16:58:53 INFO  FlightSearchStepDefs:202 - Clicking to add another room
+2020-04-28 16:58:56 INFO  FlightSearchStepDefs:222 - Clicking to to remove third room
+2020-04-28 16:58:59 INFO  FlightSearchStepDefs:230 - Clicking Done button

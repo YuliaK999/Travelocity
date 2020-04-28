@@ -69,7 +69,6 @@ public class BrowserUtilities {
         }
         Driver.getDriver().switchTo().window(origin);
     }
-    
 	
 	public static void hover(WebElement element) {
         Actions actions = new Actions(Driver.getDriver());
