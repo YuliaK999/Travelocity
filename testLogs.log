@@ -1,4 +1,5 @@
-2020-04-27 19:06:01 INFO  FlightSearchStepDefs:29 - Navigating to flights page
-2020-04-27 19:06:06 INFO  FlightSearchStepDefs:29 - Navigating to flights page
-2020-04-27 19:06:11 INFO  FlightSearchStepDefs:29 - Navigating to flights page
-2020-04-27 19:06:16 INFO  FlightSearchStepDefs:29 - Navigating to flights page
+2020-04-28 08:56:16 INFO  FlightSearchStepDefs:23 - Navigating to a TravelocityCom homepage
+2020-04-28 08:56:16 INFO  FlightSearchStepDefs:29 - Clicking on Hotels
+2020-04-28 08:56:26 INFO  FlightSearchStepDefs:58 - Clicking on Going to field
+2020-04-28 08:56:36 INFO  FlightSearchStepDefs:73 - Verifying the field should contains Florida
+2020-04-28 08:56:36 INFO  FlightSearchStepDefs:77 - Verification passed
