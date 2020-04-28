@@ -1,7 +1,14 @@
-2020-04-28 10:28:51 INFO  FlightSearchStepDefs:27 - Navigating to a TravelocityCom homepage
-2020-04-28 10:28:51 INFO  FlightSearchStepDefs:33 - Clicking on Hotels
-2020-04-28 10:29:00 INFO  FlightSearchStepDefs:94 - Clicking on Check in field
-2020-04-28 10:29:06 INFO  FlightSearchStepDefs:102 - Seting May52020 on Check in field
-2020-04-28 10:29:10 INFO  FlightSearchStepDefs:106 - Clicking Done button
-2020-04-28 10:29:14 INFO  FlightSearchStepDefs:118 - Verifying the Check in field should contains May 5
-2020-04-28 10:29:14 INFO  FlightSearchStepDefs:121 - Verification passed
+2020-04-28 16:09:54 INFO  FlightSearchStepDefs:27 - Navigating to a TravelocityCom homepage
+2020-04-28 16:09:54 INFO  FlightSearchStepDefs:33 - Clicking on Hotels
+2020-04-28 16:10:01 INFO  FlightSearchStepDefs:173 - Clicking on guest field
+2020-04-28 16:10:08 INFO  FlightSearchStepDefs:181 - Clicking minus button to decrease the adult in first room
+2020-04-28 16:10:11 INFO  FlightSearchStepDefs:189 - Clicking plus button to increase the child in first room
+2020-04-28 16:10:14 INFO  FlightSearchStepDefs:197 - Selecting age of child in first room
+2020-04-28 16:10:17 INFO  FlightSearchStepDefs:205 - Clicking to add another room
+2020-04-28 16:10:21 INFO  FlightSearchStepDefs:213 - Clicking plus button to increase the adult in second room
+2020-04-28 16:10:24 INFO  FlightSearchStepDefs:216 - Scroll down
+2020-04-28 16:10:27 INFO  FlightSearchStepDefs:205 - Clicking to add another room
+2020-04-28 16:10:30 INFO  FlightSearchStepDefs:225 - Clicking to to remove third room
+2020-04-28 16:10:34 INFO  FlightSearchStepDefs:233 - Clicking Done button
+2020-04-28 16:10:37 INFO  FlightSearchStepDefs:244 - Verifying the Check out field should contains 2 rooms, 3 guests
+2020-04-28 16:10:37 INFO  FlightSearchStepDefs:247 - Verification passed

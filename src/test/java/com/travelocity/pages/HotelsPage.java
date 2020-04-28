@@ -1,9 +1,7 @@
 package com.travelocity.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import com.travelocity.utilities.Driver;
@@ -29,12 +27,69 @@ public class HotelsPage {
 	@FindBy(xpath = "//span[.='Aug 27, 2020']")
 	public WebElement checkInCalendar;
 
-	public WebElement setCheckInDate(String month, int day, int year) {
+	public WebElement setDate(String month, int day, int year) {
 		String customXpath = "//span[.='" + month + " " + day + ", " + year + "']";
 		return Driver.getDriver().findElement(By.xpath(customXpath));
 	}
 	
 	@FindBy(xpath = "//button[@data-stid='apply-date-picker']")
 	public WebElement calendarDoneButton;
+	
+	@FindBy(id = "hotels-check-out-btn")
+	public WebElement checkOutField;
+	
+	@FindBy(id = "destination-field")
+	public WebElement guestField;
+	
+	@FindBy(xpath = "//button[.='Decrease adults in room 1']")
+	public WebElement room1AdultminusButton;
+	
+	@FindBy(xpath = "//button[.='Increase adults in room 1']")
+	public WebElement room1AdultplusButton;
+	
+	@FindBy(xpath = "//button[.='Decrease children in room 1']")
+	public WebElement room1ChildminusButton;
+	
+	@FindBy(xpath = "//select[@name='child-0-0']")
+	public WebElement room1ChildSelect;
+	
+	@FindBy(xpath = "//button[.='Increase children in room 1']")
+	public WebElement room1ChildplusButton;
+	
+	@FindBy(xpath = "//button[.='Decrease adults in room 2']")
+	public WebElement room2AdultminusButton;
+	
+	@FindBy(xpath = "//button[.='Increase adults in room 2']")
+	public WebElement room2AdultplusButton;
+	
+	@FindBy(xpath = "//button[.='Decrease children in room 2']")
+	public WebElement room2ChildminusButton;
+	
+	@FindBy(xpath = "//select[@name='child-1-0']")
+	public WebElement room2ChildSelect;
+	
+	@FindBy(xpath = "//button[.='Increase children in room 2']")
+	public WebElement room2ChildplusButton;
+	
+	@FindBy(xpath = "//button[@aria-label='Remove room 2 of 2']")
+	public WebElement remove2ndRoomButton;
+	
+	@FindBy(xpath = "//button[@aria-label='Remove room 2 of 3']")
+	public WebElement remove3rdRoomButton;
+	
+	@FindBy(xpath = "//button[.='Add another room']")
+	public WebElement addRoomButton;
+	
+	@FindBy(linkText = "Request 9+ hotel rooms")
+	public WebElement requestMoreRoomLink;
+	
+	@FindBy(xpath = "//div[@class='uitk-scrim guestsDoneBtn fade-button']")
+	public WebElement guestDoneButton;
+	
+	
+	
+	
+	
+	
 
 }

@@ -2,12 +2,9 @@ package com.travelocity.step_definitions;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -101,7 +98,7 @@ public class Hotels {
 		HotelsPage hotelspage = new HotelsPage();
 		logger.info("Seting " + string+int1+int2 + " on Check in field");
 		JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
-		js.executeScript("arguments[0].click()", hotelspage.setCheckInDate(string, int1, int2));
+		js.executeScript("arguments[0].click()", hotelspage.setDate(string, int1, int2));
 		BrowserUtilities.waitFor(3);
 		logger.info("Clicking Done button");
 		hotelspage.calendarDoneButton.click();
@@ -112,9 +109,7 @@ public class Hotels {
 	public void check_in_field_should_contain(String string, Integer int1) {
 		HotelsPage hotelspage = new HotelsPage();
 		String expected = string+int1;
-		System.out.println(expected);
 	    String actual = hotelspage.checkInField.getText();
-	    System.out.println(actual);
 	    logger.info("Verifying the Check in field should contains " + string+int1);
 		try {
 			assertTrue(actual.contains(expected));
@@ -130,6 +125,138 @@ public class Hotels {
 	}
 	
 	
+	@And("Click on Check out field")
+	public void click_on_Check_out_field() {
+		HotelsPage hotelspage = new HotelsPage();
+		logger.info("Clicking on Check out field");
+		hotelspage.checkOutField.click();
+		BrowserUtilities.waitFor(3);
+	}
+
+	@And("Set {string} {int} {int} date to Check out field")
+	public void set_date_to_Check_out_field(String string, Integer int1, Integer int2) {
+		HotelsPage hotelspage = new HotelsPage();
+		logger.info("Seting " + string+int1+int2 + " on Check out field");
+		JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
+		js.executeScript("arguments[0].click()", hotelspage.setDate(string, int1, int2));
+		BrowserUtilities.waitFor(3);
+		logger.info("Clicking Done button");
+		hotelspage.calendarDoneButton.click();
+		BrowserUtilities.waitFor(3);
+	}
+
+	@Then("Check out field should contain {string} {int}")
+	public void check_out_field_should_contain(String string, Integer int1) {
+		HotelsPage hotelspage = new HotelsPage();
+		String expected = string+int1;
+		String actual = hotelspage.checkOutField.getText();
+	    logger.info("Verifying the Check out field should contains " + string+int1);
+		try {
+			assertTrue(actual.contains(expected));
+			logger.info("Verification passed");
+
+		} catch (AssertionError e) {
+
+			logger.error("Verification failed");
+			logger.error(e.toString());
+			throw e; // re-throw my error so that my test fails
+		}
+	}
+	
+	
+	@And("Click on guest field")
+	public void click_on_guest_field() {
+		HotelsPage hotelspage = new HotelsPage();
+		logger.info("Clicking on guest field");
+		hotelspage.guestField.click();
+		BrowserUtilities.waitFor(3);
+	}
+
+	@And("Decrease the adult in first room")
+	public void decrease_the_adult_in_first_room() {
+		HotelsPage hotelspage = new HotelsPage();
+		logger.info("Clicking minus button to decrease the adult in first room");
+		hotelspage.room1AdultminusButton.click();
+		BrowserUtilities.waitFor(3);
+	}
+
+	@And("Increase the child in first room")
+	public void increase_the_child_in_first_room() {
+		HotelsPage hotelspage = new HotelsPage();
+		logger.info("Clicking plus button to increase the child in first room");
+		hotelspage.room1ChildplusButton.click();
+		BrowserUtilities.waitFor(3);
+	}
+
+	@And("Select age of child in first room")
+	public void select_age_of_child_in_first_room() {
+		HotelsPage hotelspage = new HotelsPage();
+		logger.info("Selecting age of child in first room");
+		BrowserUtilities.selectByValue(hotelspage.room1ChildSelect, "4");
+		BrowserUtilities.waitFor(3);
+	}
+
+	@Then("Click to add another room")
+	public void click_to_add_another_room() {
+		HotelsPage hotelspage = new HotelsPage();
+		logger.info("Clicking to add another room");
+		hotelspage.addRoomButton.click();
+		BrowserUtilities.waitFor(3);
+	}
+
+	@And("Increase the adult in second room")
+	public void increase_the_adult_in_second_room() {
+		HotelsPage hotelspage = new HotelsPage();
+		logger.info("Clicking plus button to increase the adult in second room");
+		hotelspage.room2AdultplusButton.click();
+		BrowserUtilities.waitFor(3);
+		logger.info("Scroll down");
+		JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
+		js.executeScript("arguments[0].scrollIntoView();", hotelspage.addRoomButton);
+		BrowserUtilities.waitFor(3);
+	}
+
+	@And("Click to remove third room")
+	public void click_to_remove_third_room() {
+		HotelsPage hotelspage = new HotelsPage();
+		logger.info("Clicking to to remove third room");
+		hotelspage.remove3rdRoomButton.click();
+		BrowserUtilities.waitFor(3);
+	}
+
+	@And("Click Done button")
+	public void click_Done_button() {
+		HotelsPage hotelspage = new HotelsPage();
+		logger.info("Clicking Done button");
+		hotelspage.guestDoneButton.click();
+		BrowserUtilities.waitFor(3);
+	}
+
+	@Then("Verify total rooms and guests")
+	public void verify_total_rooms_and_guests() {
+		HotelsPage hotelspage = new HotelsPage();
+		String expected = "2 rooms, 3 guests";
+		String actual = hotelspage.guestField.getAttribute("value");
+		System.out.println(actual);
+	    logger.info("Verifying the Check out field should contains 2 rooms, 3 guests");
+		try {
+			assertTrue(actual.contains(expected));
+			logger.info("Verification passed");
+
+		} catch (AssertionError e) {
+
+			logger.error("Verification failed");
+			logger.error(e.toString());
+			throw e; // re-throw my error so that my test fails
+		}
+	}
+	
+	
+	
+	
+	}
+	
+	
 	
 
-}
+
