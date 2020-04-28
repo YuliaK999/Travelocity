@@ -9,32 +9,32 @@ import org.openqa.selenium.support.PageFactory;
 import com.travelocity.utilities.Driver;
 
 public class HotelsPage {
-	
-	public HotelsPage () {
+
+	public HotelsPage() {
 		PageFactory.initElements(Driver.getDriver(), this);
 	}
-	
-	@FindBy (id = "primary-header-hotel")
+
+	@FindBy(id = "primary-header-hotel")
 	public WebElement hotelsMenu;
-	
-	@FindBy (xpath = "//button[contains(@aria-label,'Going to')]")
+
+	@FindBy(xpath = "//button[contains(@aria-label,'Going to')]")
 	public WebElement goingToField;
-	
-	@FindBy (xpath = "//input[@name='foo']")
+
+	@FindBy(xpath = "//input[@name='foo']")
 	public WebElement destenationField;
-	
-	@FindBy (id = "hotels-check-in-btn")
+
+	@FindBy(id = "hotels-check-in-btn")
 	public WebElement checkInField;
-	
-	@FindBy (xpath = "//span[.='Aug 27, 2020']")
+
+	@FindBy(xpath = "//span[.='Aug 27, 2020']")
 	public WebElement checkInCalendar;
-	
-	public WebElement date(String month, int day, int year) {
-		WebDriver driver = new ChromeDriver();
-		WebElement date = driver.findElement(By.xpath("//span[.='"+month+" "+day+", "+year+"']"));
-		return date;
+
+	public WebElement setCheckInDate(String month, int day, int year) {
+		String customXpath = "//span[.='" + month + " " + day + ", " + year + "']";
+		return Driver.getDriver().findElement(By.xpath(customXpath));
 	}
 	
-	
+	@FindBy(xpath = "//button[@data-stid='apply-date-picker']")
+	public WebElement calendarDoneButton;
 
 }
