@@ -51,7 +51,7 @@ public class FlightsPage {
 	@FindBy (id = "flight-children-hp-flight")
 	public WebElement childrenNumber;
 	
-	@FindBy (className = "//form[@id='gcw-flights-form-hp-flight']//span[contains(text(),'Search')]")
+	@FindBy (xpath = "//form[@id='gcw-flights-form-hp-flight']//button[contains(@class,'btn-primary btn-action gcw-submit')]")
 	public WebElement searchButton;
 	
 	@FindBy (className = "multiLineDisplay details")
@@ -99,6 +99,8 @@ public class FlightsPage {
 				}
 			}
 	}
+	
+	//td[@class='dl-datepicker-current-day']//a[@class='dl-state-default'][contains(text(),'27')]
 	
 	public String generateKeyword() {
 		String s = "gfk";

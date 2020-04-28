@@ -27,6 +27,7 @@ public class FlightSearchStepDefs {
 	public void i_am_on_the_flights_page() {
 		FlightsPage flightsPage = new FlightsPage();
 		Driver.getDriver().get(ConfigReader.getConfiguration("url"));
+		Driver.getDriver().manage().window().maximize();
 		logger.info("Navigating to flights page");
 		flightsPage.flightsButton.click();
 	}
@@ -107,14 +108,13 @@ public class FlightSearchStepDefs {
 		BrowserUtilities.selectFromList(flightsPage.airportList, "Shanghai (PVG - Pudong Intl.)");
 		flightsPage.departingDate.click();
 		flightsPage.selectMonthYearDay("May", "2020", "25");
-		//flightsPage.returningDate.click();
-		//flightsPage.selectMonthYearDay("Aug", "2020", "1");
+		flightsPage.returningDate.click();
+		flightsPage.selectMonthYearDay("Aug", "2020", "1");
 		BrowserUtilities.selectByVisibleText(flightsPage.adultsNumber, "2");
 		BrowserUtilities.selectByValue(flightsPage.childrenNumber,"1");
 		BrowserUtilities.selectByValue(flightsPage.childAge,"9");
-		JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-		js.executeScript("arguments[0].click();", flightsPage.searchButton);
-	}
+		flightsPage.searchButton.click();
+		}
 
 	@Then("I should see correct flights")
 	public void i_should_see_correct_flights() {
