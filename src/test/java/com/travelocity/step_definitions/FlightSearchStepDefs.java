@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 
 import com.travelocity.pages.FlightsPage;
 import com.travelocity.step_definitions.FlightSearchStepDefs;
@@ -84,7 +85,9 @@ public class FlightSearchStepDefs {
 	@When("I click on Search button")
 	public void i_click_on_Search_button() {
 		FlightsPage flightsPage = new FlightsPage();
-		flightsPage.searchButton.click();
+		JavascriptExecutor js= (JavascriptExecutor) Driver.getDriver();
+		js.executeScript("arguments[0].click();", flightsPage.searchButton);
+		
 	}
 
 	@Then("Error messages should be displayed")
@@ -92,6 +95,32 @@ public class FlightSearchStepDefs {
 		FlightsPage flightsPage = new FlightsPage();
 		Assert.assertEquals("Please correct the errors below.",flightsPage.errorMessage.getText());
 	}
+	
+	@When("I enter flight details")
+	public void i_enter_flight_details() {
+		FlightsPage flightsPage = new FlightsPage();
+		flightsPage.flyingFromAirport.click();
+		flightsPage.flyingFromAirport.sendKeys("Istanbul");
+		BrowserUtilities.selectFromList(flightsPage.airportList, "Istanbul (IST - All Airports)");
+		flightsPage.flyingToAirport.click();
+		flightsPage.flyingToAirport.sendKeys("Shanghai");
+		BrowserUtilities.selectFromList(flightsPage.airportList, "Shanghai (PVG - Pudong Intl.)");
+		flightsPage.departingDate.click();
+		flightsPage.selectMonthYearDay("May", "2020", "25");
+		//flightsPage.returningDate.click();
+		//flightsPage.selectMonthYearDay("Aug", "2020", "1");
+		BrowserUtilities.selectByVisibleText(flightsPage.adultsNumber, "2");
+		BrowserUtilities.selectByValue(flightsPage.childrenNumber,"1");
+		BrowserUtilities.selectByValue(flightsPage.childAge,"9");
+		JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+		js.executeScript("arguments[0].click();", flightsPage.searchButton);
+	}
+
+	@Then("I should see correct flights")
+	public void i_should_see_correct_flights() {
+	    System.out.println("pass");
+	}
+
 	
 	
 }

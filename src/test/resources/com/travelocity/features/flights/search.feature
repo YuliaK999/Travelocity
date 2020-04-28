@@ -39,6 +39,13 @@ Background:
  	Scenario: Verify error messages
 		When I click on Search button
 		Then Error messages should be displayed
+	
+	@test	
+	Scenario: Verify flight search
+		When I enter flight details
+		And I click on Search button
+		Then I should see correct flights
+	
 
 
    
