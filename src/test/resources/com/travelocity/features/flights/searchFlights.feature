@@ -1,64 +1,30 @@
-#Author: your.email@your.domain.com
-#Keywords Summary :
-#Feature: List of scenarios.
-#Scenario: Business rule through list of steps with arguments.
-#Given: Some precondition step
-#When: Some key actions
-#Then: To observe outcomes or validation
-#And,But: To enumerate more Given,When,Then steps
-#Scenario Outline: List of steps for data-driven as an Examples and <placeholder>
-#Examples: Container for s table
-#Background: List of steps run before each of the scenarios
-#""" (Doc Strings)
-#| (Data Tables)
-#@ (Tags/Labels):To group Scenarios
-#<> (placeholder)
-#""
-## (Comments)
-#Sample Feature Definition Template
-#@tag
+
 Feature: Verify Flights search page
 
-Background:
-	Given I am on the flights page
+  Background: 
+    Given I am on the flights page
+	
+  Scenario: Verify flights page
+    When I click on Hotels button
+    And I click on Flights button
+    Then I should land on flights page
 
-	Scenario: Verify flights page
-		When I click on Hotels button
-		And I click on Flights button
-		Then I should land on flights page
- 
-
+  
   Scenario: Verify dropdown suggestions by keyword
     When I type a keyword into Flying from field
     Then I should see suggested options in the dropdown
-    
-	Scenario: Verify Clear button
-		When I type a keyword into Flying from field
-		And I click on Clear button
-		Then Flying from field should get cleared
-	
-		
- 	Scenario: Verify error messages
-		When I click on Search button
-		Then Error messages should be displayed
-	
-	@testing	
-	Scenario: Verify flight search
-		When I enter flight details
-		And I click on Search button
-		Then I should see correct flights
-	
 
+  Scenario: Verify Clear button
+    When I type a keyword into Flying from field
+    And I click on Clear button
+    Then Flying from field should get cleared
 
+  Scenario: Verify error messages
+    When I click on Search button
+    Then Error messages should be displayed
+	
+  Scenario: Verify flight search
+    When I enter flight details
+    And I click on Search button
+    Then I should see correct flights
    
-
-#  @tag2
- # Scenario Outline: Title of your scenario outline
-  #  Given I want to write a step with <name>
-   # When I check for the <value> in step
-    #Then I verify the <status> in step
-
-    #Examples: 
-     # | name  | value | status  |
-      #| name1 |     5 | success |
-      #| name2 |     7 | Fail    |

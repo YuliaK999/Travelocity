@@ -21,7 +21,7 @@ public class Hotels {
 	@Given("I am on the TravelocityCom homepage")
 	public void i_am_on_the_TravelocityCom_homepage() {
 		Driver.getDriver().get(ConfigReader.getConfiguration("url"));
-		logger.info("Navigating to a TravelocityCom homepage");
+		logger.info("Navigating to a TravelocityCom home page");
 	}
 
 	@Given("Click on hotels")
@@ -96,7 +96,7 @@ public class Hotels {
 	@And("Set {string} {int} {int} date to Check in field")
 	public void set_date_to_Check_in_field(String string, Integer int1, Integer int2) {
 		HotelsPage hotelspage = new HotelsPage();
-		logger.info("Seting " + string+int1+int2 + " on Check in field");
+		logger.info("Setting " + string+int1+int2 + " on Check in field");
 		JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
 		js.executeScript("arguments[0].click()", hotelspage.setDate(string, int1, int2));
 		BrowserUtilities.waitFor(3);
@@ -136,7 +136,7 @@ public class Hotels {
 	@And("Set {string} {int} {int} date to Check out field")
 	public void set_date_to_Check_out_field(String string, Integer int1, Integer int2) {
 		HotelsPage hotelspage = new HotelsPage();
-		logger.info("Seting " + string+int1+int2 + " on Check out field");
+		logger.info("Setting " + string+int1+int2 + " on Check out field");
 		JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
 		js.executeScript("arguments[0].click()", hotelspage.setDate(string, int1, int2));
 		BrowserUtilities.waitFor(3);
@@ -251,10 +251,35 @@ public class Hotels {
 		}
 	}
 	
-	
-	
-	
+	@Then("Click Search button")
+	public void click_Search_button() {
+		HotelsPage hotelspage = new HotelsPage();
+		logger.info("Clicking on search button");
+		hotelspage.searchButton.click();
+		BrowserUtilities.waitFor(10);
 	}
+
+	@Then("The hotels page title should be Florida, United States of America Hotel Search Results")
+	public void the_hotels_page_title_should_be_Florida_United_States_of_America_Hotel_Search_Results() {
+		logger.info("Getting the Hotels page title");
+		String actual = Driver.getDriver().getTitle();
+		String expected = "Florida, United States of America Hotel Search Results";
+		logger.info("Verifying the title");
+		try {
+			assertEquals(expected, actual);
+			logger.info("Title Verification passed");
+
+		} catch (AssertionError e) {
+
+			logger.error("Title Verification failed");
+			logger.error(e.toString());
+			throw e; // re-throw my error so that my test fails
+		}
+	}
+	
+	
+	
+}
 	
 	
 	

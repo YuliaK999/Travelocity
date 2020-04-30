@@ -86,6 +86,9 @@ public class HotelsPage {
 	@FindBy(xpath = "//div[@class='uitk-scrim guestsDoneBtn fade-button']")
 	public WebElement guestDoneButton;
 	
+	@FindBy(xpath = "//button[@data-testid='wizard-submit-button']")
+	public WebElement searchButton;
+	
 	
 	
 	

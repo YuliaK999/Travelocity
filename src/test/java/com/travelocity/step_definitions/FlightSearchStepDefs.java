@@ -4,16 +4,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.JavascriptExecutor;
-
 import com.travelocity.pages.FlightsPage;
 import com.travelocity.step_definitions.FlightSearchStepDefs;
 import com.travelocity.utilities.LoggerUtils;
-
 import java.util.List;
-
 import org.apache.log4j.Logger;
-
 import com.travelocity.utilities.BrowserUtilities;
 import com.travelocity.utilities.ConfigReader;
 import com.travelocity.utilities.Driver;
@@ -47,7 +42,7 @@ public class FlightSearchStepDefs {
 	@Then("I should land on flights page")
 	public void i_should_land_on_flights_page() {
 		FlightsPage flightsPage = new FlightsPage();
-		String actualColor = flightsPage.flightsButton.getCssValue("background-color");
+		//String actualColor = flightsPage.flightsButton.getCssValue("background-color");
 		//Assert.assertEquals("rgb(0,78,147)", actualColor);
 		Assert.assertTrue(flightsPage.flightsText.getText().contains("Flights"));
 	}
@@ -106,16 +101,18 @@ public class FlightSearchStepDefs {
 		flightsPage.flyingToAirport.sendKeys("Shanghai");
 		BrowserUtilities.selectFromList(flightsPage.airportList, "Shanghai (PVG - Pudong Intl.)");
 		flightsPage.departingDate.click();
-		flightsPage.selectMonthYearDay("May", "2020", "25");
+		flightsPage.setDate("2020", "4", "6").click();
+		//flightsPage.selectMonthYearDay("May", "2020", "25");
 		BrowserUtilities.waitFor(3);
 		flightsPage.returningDate.click();
 		BrowserUtilities.waitFor(3);
-		flightsPage.selectMonthYearDay("Sep", "2020", "15");
+		flightsPage.setDate("2020", "4", "15").click();
+		//flightsPage.selectMonthYearDay("Sep", "2020", "15");
 		BrowserUtilities.waitFor(3);
 		BrowserUtilities.selectByVisibleText(flightsPage.adultsNumber, "2");
 		BrowserUtilities.selectByValue(flightsPage.childrenNumber,"1");
 		BrowserUtilities.selectByValue(flightsPage.childAge,"9");
-		flightsPage.searchButton.click();
+		
 		}
 
 	@Then("I should see correct flights")
