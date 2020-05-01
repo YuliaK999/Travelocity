@@ -4,21 +4,21 @@ Feature: Hotel search functionality
   Background: 
     Given I am on the TravelocityCom homepage
     When Click on hotels
-
+	@testing
   Scenario: Verify hotels page title
     Then The hotels page title should be Cheap Hotels: Book Hotel Deals With Our Hotel Finder | Travelocity
 
-
+	@testing
   Scenario: Verify destenation field functionality 
   And Click on Going to field
 	And Enter "Florida" destination
 	Then Destination field should contain "Florida"
 	
-
+	
   Scenario: Verify check in  field functionality 
   And Click on Check in field
-	And Set "May" 5 2020 date to Check in field
-	Then Check in field should contain "May " 5
+	And Set "May" 7 2020 date to Check in field
+	Then Check in field should contain "May " 7
 	
 	
   Scenario: Verify check out  field functionality 
@@ -26,7 +26,7 @@ Feature: Hotel search functionality
 	And Set "May" 11 2020 date to Check out field
 	Then Check out field should contain "May " 11
 	
-	
+	@testing
   Scenario: Verify guest  field functionality 
   And Click on guest field
 	And Decrease the adult in first room
@@ -38,7 +38,7 @@ Feature: Hotel search functionality
 	And Click to remove third room
 	And Click Done button
 	Then Verify total rooms and guests
-	@testing
+	
 	Scenario: Verify search functionality 
 	And Click on Going to field
 	And Enter "Florida" destination

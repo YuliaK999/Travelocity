@@ -8,11 +8,11 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith (Cucumber.class)
 @CucumberOptions (
 		
-//		plugin = {
-//				"html:target/built-in-html-report",
-//				"json:target/Cucumber.json "
+		plugin = {
+				"html:target/built-in-html-report",
+				"json:target/Cucumber.json "
 		
-//		},
+		},
 					
 
 		tags = "@testing", // "@smoke and @test"

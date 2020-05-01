@@ -30,7 +30,7 @@ public void the_cars_page_title_should_be_Wander_Wisely_with_Cheap_Hotels_Flight
 	 logger.info("Verify title");
 	 carpage.carsClickBitton.click();
 	 String actual = Driver.getDriver().getTitle();
-	 String expected = " Wander Wisely with Cheap Hotels, Flights, Vacations & Travel Deals | Travelocity";
+	 String expected = "Wander Wisely with Cheap Hotels, Flights, Vacations & Travel Deals | Travelocity";
 
 		try {
 			assertEquals(expected, actual);

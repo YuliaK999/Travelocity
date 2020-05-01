@@ -1,4 +1,4 @@
-
+@testing
 Feature: Verify Flights search page
 
   Background: 

@@ -21,21 +21,22 @@ public class HotelsPage {
 	@FindBy(xpath = "//input[@name='foo']")
 	public WebElement destenationField;
 
-	@FindBy(id = "hotels-check-in-btn")
+	@FindBy(id = "start-btn")
 	public WebElement checkInField;
 
 	@FindBy(xpath = "//span[.='Aug 27, 2020']")
 	public WebElement checkInCalendar;
+	//button[@aria-label='May 6, 2020']
 
 	public WebElement setDate(String month, int day, int year) {
-		String customXpath = "//span[.='" + month + " " + day + ", " + year + "']";
+		String customXpath = "button[@aria-label='" + month + " " + day + ", " + year + "']";
 		return Driver.getDriver().findElement(By.xpath(customXpath));
 	}
 	
-	@FindBy(xpath = "//button[@data-stid='apply-date-picker']")
+	@FindBy(xpath = "//span[contains(text(),'Done')]")
 	public WebElement calendarDoneButton;
 	
-	@FindBy(id = "hotels-check-out-btn")
+	@FindBy(id = "end-btn")
 	public WebElement checkOutField;
 	
 	@FindBy(id = "destination-field")

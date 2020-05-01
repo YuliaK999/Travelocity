@@ -1,3 +1,4 @@
+@testing
 Feature: Cars search functionality
 
   Background: 
@@ -14,7 +15,7 @@ Feature: Cars search functionality
 	And Enter "Los" as a pick up location
 	Then Picking up field should contain "Los Angeles"
 	
-@testing
+
   Scenario: Verify check in  field functionality 
   And Click on Drop off
 	And Enter "San" as a drop off location

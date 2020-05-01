@@ -90,15 +90,15 @@ public class Hotels {
 		HotelsPage hotelspage = new HotelsPage();
 		logger.info("Clicking on Check in field");
 		hotelspage.checkInField.click();
-		BrowserUtilities.waitFor(3);
+		BrowserUtilities.waitFor(5);
 	}
 
 	@And("Set {string} {int} {int} date to Check in field")
 	public void set_date_to_Check_in_field(String string, Integer int1, Integer int2) {
 		HotelsPage hotelspage = new HotelsPage();
 		logger.info("Setting " + string+int1+int2 + " on Check in field");
-		JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
-		js.executeScript("arguments[0].click()", hotelspage.setDate(string, int1, int2));
+		//JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
+		//js.executeScript("arguments[0].click()", hotelspage.setDate(string, int1, int2));
 		BrowserUtilities.waitFor(3);
 		logger.info("Clicking Done button");
 		hotelspage.calendarDoneButton.click();
