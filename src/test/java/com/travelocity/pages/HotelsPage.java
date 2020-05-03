@@ -27,11 +27,21 @@ public class HotelsPage {
 	@FindBy(xpath = "//span[.='Aug 27, 2020']")
 	public WebElement checkInCalendar;
 	//button[@aria-label='May 6, 2020']
-
+	
 	public WebElement setDate(String month, int day, int year) {
-		String customXpath = "button[@aria-label='" + month + " " + day + ", " + year + "']";
+		String customXpath = "//button[@aria-label='" + month + " " + day + ", " + year + "']";
 		return Driver.getDriver().findElement(By.xpath(customXpath));
 	}
+
+	public WebElement setDate2(String month, int day, int year) {
+		String customXpath = "//button[@aria-label='" + month + " " + day + ", " + year + "']";
+		while(!Driver.getDriver().findElement(By.xpath(customXpath)).isDisplayed()) {
+			Driver.getDriver().findElement(By.xpath("//div[@class='uitk-calendar']//button[2]")).click();
+		}
+		return Driver.getDriver().findElement(By.xpath(customXpath));
+	}
+	
+	
 	
 	@FindBy(xpath = "//span[contains(text(),'Done')]")
 	public WebElement calendarDoneButton;

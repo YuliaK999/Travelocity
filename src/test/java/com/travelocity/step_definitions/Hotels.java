@@ -97,11 +97,11 @@ public class Hotels {
 	public void set_date_to_Check_in_field(String string, Integer int1, Integer int2) {
 		HotelsPage hotelspage = new HotelsPage();
 		logger.info("Setting " + string+int1+int2 + " on Check in field");
-		//JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
-		//js.executeScript("arguments[0].click()", hotelspage.setDate(string, int1, int2));
+		JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
+		js.executeScript("arguments[0].click()", hotelspage.setDate2(string, int1, int2));
 		BrowserUtilities.waitFor(3);
 		logger.info("Clicking Done button");
-		hotelspage.calendarDoneButton.click();
+		js.executeScript("arguments[0].click()",hotelspage.calendarDoneButton);
 		BrowserUtilities.waitFor(3);
 	}
 
@@ -141,7 +141,7 @@ public class Hotels {
 		js.executeScript("arguments[0].click()", hotelspage.setDate(string, int1, int2));
 		BrowserUtilities.waitFor(3);
 		logger.info("Clicking Done button");
-		hotelspage.calendarDoneButton.click();
+		js.executeScript("arguments[0].click()",hotelspage.calendarDoneButton);
 		BrowserUtilities.waitFor(3);
 	}
 

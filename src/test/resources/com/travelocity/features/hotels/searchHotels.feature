@@ -14,11 +14,11 @@ Feature: Hotel search functionality
 	And Enter "Florida" destination
 	Then Destination field should contain "Florida"
 	
-	
+	@test
   Scenario: Verify check in  field functionality 
   And Click on Check in field
-	And Set "May" 7 2020 date to Check in field
-	Then Check in field should contain "May " 7
+	And Set "Jul" 7 2020 date to Check in field
+	Then Check in field should contain "Jul " 7
 	
 	
   Scenario: Verify check out  field functionality 

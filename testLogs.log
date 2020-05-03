@@ -1,2 +1,4 @@
-2020-05-01 14:30:33 INFO  FlightSearchStepDefs:24 - Navigating to a TravelocityCom home page
-2020-05-01 14:30:49 INFO  FlightSearchStepDefs:24 - Navigating to a TravelocityCom home page
+2020-05-03 14:22:44 INFO  FlightSearchStepDefs:24 - Navigating to a TravelocityCom home page
+2020-05-03 14:22:44 INFO  FlightSearchStepDefs:30 - Clicking on Hotels
+2020-05-03 14:22:48 INFO  FlightSearchStepDefs:91 - Clicking on Check in field
+2020-05-03 14:22:53 INFO  FlightSearchStepDefs:99 - Setting Jul72020 on Check in field
