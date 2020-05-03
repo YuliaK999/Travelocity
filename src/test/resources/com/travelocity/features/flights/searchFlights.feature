@@ -22,9 +22,33 @@ Feature: Verify Flights search page
   Scenario: Verify error messages
     When I click on Search button
     Then Error messages should be displayed
+    
+  Scenario: Verify flight type
+ 	  When I select trip type as the following
+ 	  						| Roundtrip |
+								| One way		|
+								| Multy-city|
+ 	  And I enter the random flight details
+ 	  And I click on Search button
+ 	  Then Flight tickets of the correct trip type should be displayed
+ 	  
+ 	Scenario: Verify number of children
+ 		When I select 2 children
+ 		Then 2 options to enter children age shoud be displayed
+ 	  
 	
-  Scenario: Verify flight search
-    When I enter flight details
-    And I click on Search button
-    Then I should see correct flights
-   
+ # Scenario: Verify flight search
+  #  When I enter the following flight details
+   # |Flying from						|Flying to									|Day|Month|Year|Adults|Children	|Child age |
+    #|Istanbul (IST-Istanbul)|Shanghai (PVG-Pudong Intl.)|8	|9		|2020|2			|1				|5				 |
+    
+ #   Examples:
+  #  |fromAirport						 |toAirport								   |departDate|adults |children|childAge|
+   # |Istanbul (IST-Istanbul)|Shanghai (PVG-Pudong Intl.)|09/08/2020|2			|1			 |5				|
+    
+   # And I click on Search button
+    #And I click on Nonstop checkbox
+    #Then The flight details have to be as following
+    #|departureTime|arrivalTime|airline 				 |rating|duration|numberOfStops|fromAirport|toAirport|price|typeOfTrip|
+    #|1:25am				|4:45pm			|Turkish Airlines|8.5		|10h 20m |Nonstop			 |IST				 |PVG			 |$376 |one way	  |
+   	#|1:25am				|4:45pm			|Air China			 |8.5		|10h 20m |Nonstop			 |IST				 |PVG			 |$666 |one way	  |

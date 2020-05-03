@@ -3,11 +3,22 @@ package com.travelocity.step_definitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import com.github.javafaker.Faker;
+import com.travelocity.pages.FlightResultPage;
 import com.travelocity.pages.FlightsPage;
 import com.travelocity.step_definitions.FlightSearchStepDefs;
 import com.travelocity.utilities.LoggerUtils;
+
+import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
+
 import org.apache.log4j.Logger;
 import com.travelocity.utilities.BrowserUtilities;
 import com.travelocity.utilities.ConfigReader;
@@ -91,7 +102,7 @@ public class FlightSearchStepDefs {
 		Assert.assertEquals("Please correct the errors below.",flightsPage.errorMessage.getText());
 	}
 	
-	@When("I enter flight details")
+	/*@When("I enter flight details")
 	public void i_enter_flight_details() {
 		FlightsPage flightsPage = new FlightsPage();
 		flightsPage.flyingFromAirport.click();
@@ -102,22 +113,87 @@ public class FlightSearchStepDefs {
 		BrowserUtilities.selectFromList(flightsPage.airportList, "Shanghai (PVG - Pudong Intl.)");
 		flightsPage.departingDate.click();
 		flightsPage.setDate("2020", "4", "6").click();
-		//flightsPage.selectMonthYearDay("May", "2020", "25");
-		BrowserUtilities.waitFor(3);
 		flightsPage.returningDate.click();
-		BrowserUtilities.waitFor(3);
 		flightsPage.setDate("2020", "4", "15").click();
-		//flightsPage.selectMonthYearDay("Sep", "2020", "15");
-		BrowserUtilities.waitFor(3);
 		BrowserUtilities.selectByVisibleText(flightsPage.adultsNumber, "2");
 		BrowserUtilities.selectByValue(flightsPage.childrenNumber,"1");
 		BrowserUtilities.selectByValue(flightsPage.childAge,"9");
 		
-		}
+		}*/
+	
+	@When("I select {int} children")
+	public void i_select_children(Integer int1) {
+		FlightsPage flightsPage = new FlightsPage();
+		BrowserUtilities.selectByValue(flightsPage.childrenNumber,int1+""); // from 0 to 6
+	}
 
-	@Then("I should see correct flights")
-	public void i_should_see_correct_flights() {
-	    System.out.println("pass");
+	@Then("{int} options to enter children age shoud be displayed")
+	public void options_to_enter_children_age_shoud_be_displayed(Integer int1) {
+		FlightsPage flightsPage = new FlightsPage();
+		int count = 0;
+		if (int1==0) { 
+			Assert.assertFalse(flightsPage.childAge.isDisplayed());
+		}else { 
+			//Assert.assertTrue(flightsPage.checkNumberOfChildren(int1).isDisplayed());
+			for (WebElement age : flightsPage.childAgeList) 
+				if (age.isDisplayed()) count++;
+			Assert.assertTrue(int1==count);
+		}	
+	}
+
+
+	@When("I select trip type as {string}")
+	public void i_select_trip_type_as(String tripType) {
+		FlightsPage flightsPage = new FlightsPage();
+		flightsPage.setTripType(tripType).click();
+	}
+
+	@When("I enter the random flight details")
+	public void i_enter_the_flight_details_for(List<String> tripTypes) {
+		FlightsPage flightsPage = new FlightsPage();
+		Faker f = new Faker();
+		for (String tripType : tripTypes) {
+		switch(tripType) {
+		case "Roundtrip": 
+			flightsPage.flyingFromAirport.sendKeys(f.aviation().airport()); //airport from Faker class
+			flightsPage.flyingToAirport.sendKeys(f.aviation().airport()); //airport from Faker class
+			flightsPage.departingDate.click();
+			flightsPage.setDate("2020", "9", "8").click();
+			flightsPage.returningDate.click();
+			flightsPage.setDate("2020", "9", "15").click();
+			BrowserUtilities.selectByVisibleText(flightsPage.adultsNumber, new Random().nextInt(6)+1+""); //
+			BrowserUtilities.selectByValue(flightsPage.childrenNumber,"0");
+			break;
+		case "One-way": 
+			flightsPage.flyingFromAirport.sendKeys(f.aviation().airport()); //airport from Faker class
+			flightsPage.flyingToAirport.sendKeys(f.aviation().airport()); //airport from Faker class
+			flightsPage.departingDate.click();
+			flightsPage.setDate("2020", "9", "8").click();
+			BrowserUtilities.selectByVisibleText(flightsPage.adultsNumber, new Random().nextInt(6)+1+""); //random number from 1 to 6
+			BrowserUtilities.selectByValue(flightsPage.childrenNumber,"0");
+			break;
+		case "Multi-city":
+			String transferAirport = f.aviation().airport();
+			flightsPage.flyingFromAirport.sendKeys(f.aviation().airport()); //airport from Faker class
+			flightsPage.flyingToAirport.sendKeys(transferAirport); //transferAirport
+			flightsPage.departingDate.click();
+			flightsPage.setDate("2020", "9", "8").click();
+			BrowserUtilities.selectByVisibleText(flightsPage.adultsNumber, new Random().nextInt(6)+1+""); //
+			BrowserUtilities.selectByValue(flightsPage.childrenNumber,"0");
+			flightsPage.flyingFromAirport2.sendKeys(transferAirport); //airport from Faker class
+			flightsPage.flyingToAirport2.sendKeys(f.aviation().airport()); //transferAirport
+			flightsPage.departingDate2.click();
+			flightsPage.setDate("2020", "9", "15").click();
+			break;
+			}
+		}
+	}
+
+	@Then("The result page should also display {string}")
+	public void the_result_page_should_also_display(String expected) {
+		FlightResultPage flightResultPage = new FlightResultPage();
+		String actual = flightResultPage.typeOfTrip.getText();
+		Assert.assertEquals(expected.toLowerCase(), actual);
 	}
 
 	

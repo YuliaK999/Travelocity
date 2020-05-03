@@ -29,7 +29,13 @@ public class FlightsPage {
 
 	@FindBy(id = "flight-origin-hp-flight")
 	public WebElement flyingFromAirport;
-
+	
+	@FindBy(id = "flight-2-origin-hp-flight")
+	public WebElement flyingFromAirport2;
+	
+	@FindBy(id = "flight-2-destination-hp-flight")
+	public WebElement flyingToAirport2;
+	
 	@FindBy(xpath = "//div[@class='multiLineDisplay details']")
 	public List<WebElement> airportList;
 
@@ -38,6 +44,9 @@ public class FlightsPage {
 
 	@FindBy(id = "flight-departing-hp-flight")
 	public WebElement departingDate;
+	
+	@FindBy(id = "flight-2-departing-hp-flight")
+	public WebElement departingDate2;
 
 	@FindBy(id = "flight-returning-hp-flight")
 	public WebElement returningDate;
@@ -74,7 +83,31 @@ public class FlightsPage {
 
 	@FindBy(id = "flight-age-select-1-hp-flight")
 	public WebElement childAge;
-
+	
+	@FindBy(id = "flight-type-one-way-label-hp-flight")
+	public WebElement oneWay;
+	
+	@FindBy(id = "flight-type-roundtrip-label-hp-flight")
+	public WebElement roundTrip;
+	
+	@FindBy(id = "flight-type-multi-dest-label-hp-flight")
+	public WebElement multiCity;
+	
+	@FindBy(xpath="//select[starts-with(@id,'flight-age-select')]")
+	public List<WebElement> childAgeList;
+	
+	public WebElement setTripType(String tripType) {
+		String customXpath = "//span[.='"+ tripType +"']";
+		return Driver.getDriver().findElement(By.xpath(customXpath));
+	}
+	
+	public WebElement checkNumberOfChildren(int numberOfChildren) {
+		String customID = "flight-age-select-" + numberOfChildren + "-hp-flight";
+		return Driver.getDriver().findElement(By.id(customID));
+	}
+	
+	
+	
 	public void selectMonthYearDay(String month, String year, String day) {
 		if (leftMonthYear.getText().equals(month.concat(" " + year)))
 			selectCalendarDay(leftCalendar, day);

@@ -19,9 +19,9 @@ import io.cucumber.junit.CucumberOptions;
 		features = "src/test/resources/com/travelocity/features",
 		glue = "com/travelocity/step_definitions"
 		,strict = true
-//		,dryRun = true
-//		,monochrome =true
-//		,stepNotifications = true
+		,dryRun = true
+		,monochrome =true
+		,stepNotifications = true
 //		,snippets = SnippetType.CAMELCASE
 		)
 public class CukeRunner {
