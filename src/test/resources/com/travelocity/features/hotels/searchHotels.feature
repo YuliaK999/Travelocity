@@ -43,7 +43,7 @@ Feature: Hotel search functionality
 	And Click on Going to field
 	And Enter "Florida" destination
 	And Click on Check in field
-	And Set "May" 5 2020 date to Check in field
+	And Set "May" 10 2020 date to Check in field
 	And Click on Check out field
 	And Set "May" 11 2020 date to Check out field
 	And Click on guest field

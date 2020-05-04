@@ -64,6 +64,20 @@ public class ExcelUtils {
 		}
 		return table;
 	}
+	
+	public List<List<String>> getDataAsList2(){
+		List<List<String>> list = new ArrayList<>();
+		for (int i = 0; i < rowCount(); i++) {
+			XSSFRow row = sheet.getRow(i);
+			List<String> rowList = new ArrayList<>();
+			for (Cell cell : row) {
+				rowList.add(cell.toString());
+			}
+			list.add(rowList);
+		}
+		return list;
+	}
+	
 	public List<Map<String, String>> getDataAsList() {
 		
 		List<String> columnNames = getColumnNames(); // gets the names of columns

@@ -15,17 +15,25 @@ import com.travelocity.pages.FlightsPage;
 import com.travelocity.step_definitions.FlightSearchStepDefs;
 import com.travelocity.utilities.LoggerUtils;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
+import org.apache.poi.ss.usermodel.Cell;
+
 import com.travelocity.utilities.BrowserUtilities;
 import com.travelocity.utilities.ConfigReader;
 import com.travelocity.utilities.Driver;
+import com.travelocity.utilities.ExcelUtils;
 
 public class FlightSearchStepDefs {
 	public static String keyword;
+	public static String tripType;
 	
 	Logger logger = LoggerUtils.getLogger(FlightSearchStepDefs.class);
 	
@@ -142,17 +150,17 @@ public class FlightSearchStepDefs {
 	}
 
 
-	@When("I select trip type as {string}")
-	public void i_select_trip_type_as(String tripType) {
+	@When("I select {string} as a trip type")
+	public void i_select_as_a_trip_type(String string) {
 		FlightsPage flightsPage = new FlightsPage();
-		flightsPage.setTripType(tripType).click();
+		flightsPage.setTripType(string).click();
+		tripType = string;
 	}
 
-	@When("I enter the random flight details")
-	public void i_enter_the_flight_details_for(List<String> tripTypes) {
+	@When("I enter random flight details")
+	public void i_enter_random_flight_details() {
 		FlightsPage flightsPage = new FlightsPage();
 		Faker f = new Faker();
-		for (String tripType : tripTypes) {
 		switch(tripType) {
 		case "Roundtrip": 
 			flightsPage.flyingFromAirport.sendKeys(f.aviation().airport()); //airport from Faker class
@@ -161,7 +169,7 @@ public class FlightSearchStepDefs {
 			flightsPage.setDate("2020", "9", "8").click();
 			flightsPage.returningDate.click();
 			flightsPage.setDate("2020", "9", "15").click();
-			BrowserUtilities.selectByVisibleText(flightsPage.adultsNumber, new Random().nextInt(6)+1+""); //
+			BrowserUtilities.selectByVisibleText(flightsPage.adultsNumber, new Random().nextInt(6)+1+""); //random number from 1 to 6
 			BrowserUtilities.selectByValue(flightsPage.childrenNumber,"0");
 			break;
 		case "One-way": 
@@ -185,17 +193,92 @@ public class FlightSearchStepDefs {
 			flightsPage.departingDate2.click();
 			flightsPage.setDate("2020", "9", "15").click();
 			break;
-			}
 		}
-	}
+		
+	 }
 
-	@Then("The result page should also display {string}")
-	public void the_result_page_should_also_display(String expected) {
+	@Then("Flight tickets of corresponding trip type should be displayed")
+	public void flight_tickets_of_corresponding_trip_type_should_be_displayed(){
 		FlightResultPage flightResultPage = new FlightResultPage();
 		String actual = flightResultPage.typeOfTrip.getText();
-		Assert.assertEquals(expected.toLowerCase(), actual);
+		Assert.assertEquals(tripType.toLowerCase(), actual);
+	}
+	
+	@When("I enter the flight details")
+	public void i_enter_the_flight_details() {
+		FlightsPage flightsPage = new FlightsPage();
+		
+		ExcelUtils sheet = new ExcelUtils("src/test/resources/com/travelocity/test-data/1.xlsx", "Sheet1");
+				
+		List<Map<String, String>> allRows = sheet.getDataAsList();
+		
+		for (int i = 0; i < allRows.size(); i++) {
+			
+			  Map<String, String> row = allRows.get(i);
+			  
+			if(row.get("Execute").equalsIgnoreCase("Y")) {
+				
+				flightsPage.flyingFromAirport.sendKeys(row.get("Flying from"));
+				flightsPage.flyingToAirport.sendKeys(row.get("Flying to"));
+				flightsPage.departingDate.sendKeys(row.get("Departing"));
+			}	
+		}	
 	}
 
-	
-	
+	@Then("The details of the cheapest flight ticket should be correct")
+	public void the_details_of_the_cheapest_flight_ticket_should_be_correct() {
+		FlightsPage flightsPage = new FlightsPage();
+		FlightResultPage flightResultPage = new FlightResultPage();
+		
+		ExcelUtils sheet = new ExcelUtils("src/test/resources/io/duotech/test-data/1.xlsx", "Sheet1");
+				
+		List<Map<String, String>> allRows = sheet.getDataAsList();
+		
+		for (int i = 0; i < allRows.size(); i++) {
+			
+			  Map<String, String> row = allRows.get(i);
+			  
+			if(row.get("Execute").equalsIgnoreCase("Y")) {
+				
+				String expectedPrice = row.get("Price");
+				String expectedDuration = row.get("Duration");
+				String expectedStops = row.get("Stops");
+				String expectedAirline = row.get("Airline");
+				String expectedDepartureTime = row.get("Departure time");
+				String expectedArrivalTime = row.get("Arrival time");
+				String expectedRating = row.get("Rating");
+				
+				
+				String actualPrice = flightResultPage.price.getText();
+				String actualDuration = flightResultPage.flightDuration.getText();
+				String actualStops = flightResultPage.numberOfStops.getText();
+				String actualAirline = flightResultPage.airlineName.getText();
+				String actualDepartureTime = flightResultPage.departureTime.getText();
+				String actualArrivalTime = flightResultPage.arrivalTime.getText();
+				String actualRating = flightResultPage.rating.getText();
+				
+				try {
+				assertEquals(expectedPrice, actualPrice);
+				assertEquals(expectedDuration, actualDuration);
+				assertEquals(expectedStops, actualStops);
+				assertEquals(expectedAirline, actualAirline);
+				assertEquals(expectedDepartureTime, actualDepartureTime);
+				assertEquals(expectedArrivalTime, actualArrivalTime);
+				assertEquals(expectedRating, actualRating);
+				sheet.setCellData("passed", "Status", i+1);
+				
+				}catch(AssertionError e) {
+					e.printStackTrace();
+					sheet.setCellData("fail", "Status", i+1);
+					
+				}
+				
+				Driver.getDriver().navigate().back();
+			} else {
+				sheet.setCellData("skipped", "Status", i+1);
+			} 
+			  
+	}
+
+}
 }
