@@ -1,4 +1,4 @@
-@testing
+
 Feature: Cars search functionality
 
   Background: 

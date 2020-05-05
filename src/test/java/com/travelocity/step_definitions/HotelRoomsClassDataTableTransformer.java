@@ -23,11 +23,11 @@ public class HotelRoomsClassDataTableTransformer implements TypeRegistryConfigur
             
             public HotelRooms transform(Map<String, String> row) throws Throwable{
             	         
-            	String description = row.get("description");
-        		String price = row.get("price");
-        		String numberOfGuests = row.get("numberOfGuests");
-        		String square = row.get("square");
-        		String bed = row.get("bed");
+            	String description = row.get("Description");
+        		String price = row.get("Price");
+        		String numberOfGuests = row.get("Guests");
+        		String square = row.get("Square");
+        		String bed = row.get("Bed");
         		
                 return new HotelRooms(description, price, numberOfGuests, square, bed);
                         }

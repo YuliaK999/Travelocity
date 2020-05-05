@@ -5,15 +5,19 @@ Feature: Hotel rooms
     Given I am on the TravelocityCom homepage
     When Click on hotels
    	And Click on Going to field
-		And Enter "Florida" destination
+		And Enter "The Monterey Hotel" destination
 		And Click on Check in field
 		And Set "May" 10 2020 date to Check in field
 		And Click on Check out field
 		And Set "May" 11 2020 date to Check out field
+#		And Click on guest field
+#		And Increase the adult in first room
+#		And Click Done button
     And Click Search button
-    And Click on "Comfort Suites Sarasota - Siesta Key" hotel name
+    And Click on "The Monterey Hotel" hotel name
     And Click on Rooms
     Then Room details should be as following
-  	|Description|Price|Number of guests |Square|Bed| 
-		|      |        |       |          |
+  	|Description	|Price|Guests|Square|     Bed    | 
+		|Standard Room| $89 |  2   | 182  | 1 Queen Bed|
+# custom class		
 				

@@ -6,6 +6,7 @@ import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -100,10 +101,9 @@ public class FlightSearchStepDefs {
 	@When("I click on Search button")
 	public void i_click_on_Search_button() {
 		FlightsPage flightsPage = new FlightsPage();
-		BrowserUtilities.waitForClickablility(flightsPage.searchButton, 10);;
-		flightsPage.searchButton.click();
+		flightsPage.searchButton.submit();
 	}
-
+	
 	@Then("Error messages should be displayed")
 	public void error_messages_should_be_displayed() {
 		FlightsPage flightsPage = new FlightsPage();
@@ -153,7 +153,18 @@ public class FlightSearchStepDefs {
 	@When("I select {string} as a trip type")
 	public void i_select_as_a_trip_type(String string) {
 		FlightsPage flightsPage = new FlightsPage();
-		flightsPage.setTripType(string).click();
+		switch(string) {
+		case "Roundtrip":
+			BrowserUtilities.waitFor(10);
+			flightsPage.roundTrip.click();
+			break;
+		case "One Way":	
+			flightsPage.oneWay.click();
+			break;
+		case "Multy-City":	
+			flightsPage.multiCity.click();
+			break;
+		}
 		tripType = string;
 	}
 
@@ -204,6 +215,39 @@ public class FlightSearchStepDefs {
 		Assert.assertEquals(tripType.toLowerCase(), actual);
 	}
 	
+	@When("I enter {string} as a departing city")
+	public void i_enter_as_a_departing_city(String departingCity) {
+		FlightsPage flightsPage = new FlightsPage();
+		//BrowserUtilities.waitFor(10);
+		//flightsPage.flyingFromAirport.sendKeys(departingCity);
+	}
+
+	@When("I enter {string} as an arrival city")
+	public void i_enter_as_an_arrival_city(String arrivalCity) {
+		FlightsPage flightsPage = new FlightsPage();
+		flightsPage.flyingToAirport.click();
+		flightsPage.flyingToAirport.sendKeys(arrivalCity);
+	}
+
+	@When("I enter {string} as a departing date")
+	public void i_enter_as_a_departing_date(String departingDate) {
+		FlightsPage flightsPage = new FlightsPage();
+		flightsPage.departingDate.click();
+		flightsPage.departingDate.sendKeys(departingDate);
+	}
+
+	@Then("Flight tickets should contain {string}, {string}, {string} as departure airports")
+	public void flight_tickets_should_contain_as_departure_airports(String da1, String da2, String da3) {
+		String actualDA="";
+		Boolean b;
+		FlightResultPage flightResultPage = new FlightResultPage();
+		for (WebElement da : flightResultPage.departureAirports)
+			actualDA = da.getText().substring(0, 4);
+		   	b = actualDA.equals(da1) || actualDA.equals(da2) || actualDA.equals(da3);
+		   	Assert.assertTrue(b);
+	}
+
+	
 	@When("I enter the flight details")
 	public void i_enter_the_flight_details() {
 		FlightsPage flightsPage = new FlightsPage();
@@ -218,7 +262,7 @@ public class FlightSearchStepDefs {
 			  
 			if(row.get("Execute").equalsIgnoreCase("Y")) {
 				
-				flightsPage.flyingFromAirport.sendKeys(row.get("Flying from"));
+				//!!!flightsPage.flyingFromAirport.sendKeys(row.get("Flying from"));
 				flightsPage.flyingToAirport.sendKeys(row.get("Flying to"));
 				flightsPage.departingDate.sendKeys(row.get("Departing"));
 			}	
@@ -227,7 +271,6 @@ public class FlightSearchStepDefs {
 
 	@Then("The details of the cheapest flight ticket should be correct")
 	public void the_details_of_the_cheapest_flight_ticket_should_be_correct() {
-		FlightsPage flightsPage = new FlightsPage();
 		FlightResultPage flightResultPage = new FlightResultPage();
 		
 		ExcelUtils sheet = new ExcelUtils("src/test/resources/io/duotech/test-data/1.xlsx", "Sheet1");
@@ -281,4 +324,6 @@ public class FlightSearchStepDefs {
 	}
 
 }
+	
+	
 }

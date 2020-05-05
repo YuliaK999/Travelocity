@@ -57,7 +57,7 @@ public class FlightsPage {
 	@FindBy(id = "flight-children-hp-flight")
 	public WebElement childrenNumber;
 
-	@FindBy(xpath = "//form[@id='gcw-flights-form-hp-flight']//button[contains(@class,'btn-primary btn-action gcw-submit')]")
+	@FindBy(xpath = "//label[@class='col search-btn-col']//button[.='Search']")
 	public WebElement searchButton;
 
 	@FindBy(className = "multiLineDisplay details")
@@ -87,7 +87,7 @@ public class FlightsPage {
 	@FindBy(id = "flight-type-one-way-label-hp-flight")
 	public WebElement oneWay;
 	
-	@FindBy(id = "flight-type-roundtrip-label-hp-flight")
+	@FindBy(id = "flight-type-roundtrip-hp-flight")
 	public WebElement roundTrip;
 	
 	@FindBy(id = "flight-type-multi-dest-label-hp-flight")
@@ -97,7 +97,7 @@ public class FlightsPage {
 	public List<WebElement> childAgeList;
 	
 	public WebElement setTripType(String tripType) {
-		String customXpath = "//span[.='"+ tripType +"']";
+		String customXpath = "//input[@data-gcw-sub-nav-option-name='" + tripType + "']";
 		return Driver.getDriver().findElement(By.xpath(customXpath));
 	}
 	

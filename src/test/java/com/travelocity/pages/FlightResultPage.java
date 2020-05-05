@@ -50,6 +50,8 @@ import com.travelocity.utilities.Driver;
 		@FindBy(xpath="//div[@data-test-id='price-msg-route-type']")
 		public WebElement typeOfTrip;
 		
+		@FindBy(xpath="//div[@data-test-id='flight-info']")
+		public List<WebElement> departureAirports;
 		
 	
 		
