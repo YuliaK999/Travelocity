@@ -12,14 +12,14 @@ public class HotelResultPage {
 		PageFactory.initElements(Driver.getDriver(), this);
 	}
 
-	@FindBy(xpath = "(//li)[1]")
+	@FindBy(xpath = "(//a[@class='listing__link uitk-card-link'])[1]")
 	public WebElement hotelName;
 
 	//@FindBy(xpath = "//span[.='Rooms']")
 	@FindBy(xpath = "(//span[@class='uitk-tab-text'])[2]")
 	public WebElement rooms;
 	
-	@FindBy(xpath = "(//span[contains(text(),'Room')][contains(text(),'Bed')])[1]")
+	@FindBy(xpath = "(//div[@class='room_name all-b-padding-two'])[1]")
 	public WebElement description;
 	
 	@FindBy(xpath = "(//span[@data-stid='content-hotel-lead-price'])[1]")

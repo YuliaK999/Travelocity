@@ -39,7 +39,7 @@ Feature: Hotel search functionality
 	And Click Done button
 	Then Verify total rooms and guests
 	
-	@testing
+	
 	Scenario: Verify search functionality 
 	And Click on Going to field
 	And Enter "Florida" destination

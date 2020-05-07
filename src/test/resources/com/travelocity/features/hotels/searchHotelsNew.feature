@@ -1,4 +1,4 @@
-@tests
+@SecondSprint
 Feature: Hotel search functionality
 
   Background: 

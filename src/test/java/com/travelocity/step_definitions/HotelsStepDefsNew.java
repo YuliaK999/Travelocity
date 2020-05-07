@@ -40,7 +40,7 @@ public class HotelsStepDefsNew {
 		logger.info("Entering " + destination + " on Going to field");
 		hotelspage.goingToField.sendKeys(destination);
 		logger.info("Choose from given choices");
-		BrowserUtilities.selectFromListByDataValue(hotelspage.destinationtList, "Florida");
+		BrowserUtilities.selectFromListByDataValue(hotelspage.destinationtList, destination);
 		
 	}
 
@@ -462,6 +462,7 @@ public class HotelsStepDefsNew {
 //			throw e; // re-throw my error so that my test fails
 //		}
 //	}	
+	
 	
 	
 	

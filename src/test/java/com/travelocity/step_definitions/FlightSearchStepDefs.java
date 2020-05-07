@@ -280,7 +280,7 @@ public class FlightSearchStepDefs {
 		for (int i = 0; i < allRows.size(); i++) {
 			
 			  Map<String, String> row = allRows.get(i);
-			  
+			 
 			if(row.get("Execute").equalsIgnoreCase("Y")) {
 				
 				String expectedPrice = row.get("Price");

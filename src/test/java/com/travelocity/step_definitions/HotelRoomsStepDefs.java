@@ -3,6 +3,7 @@ package com.travelocity.step_definitions;
 import org.junit.Assert;
 
 import java.util.List;
+import java.util.Set;
 
 import com.travelocity.beans.HotelRooms;
 import com.travelocity.pages.HotelResultPage;
@@ -21,11 +22,16 @@ public class HotelRoomsStepDefs {
 	
 	@When("Click on {string} hotel name")
 	public void click_on_hotel_name(String string) {
-		Driver.getDriver().manage().deleteAllCookies();
 		HotelResultPage hotelResultPage = new HotelResultPage();
-		String parentWindowId= Driver.getDriver().getWindowHandle();
+		String parentWindowHandle = Driver.getDriver().getWindowHandle();
 		hotelResultPage.hotelName.click();
-		Driver.getDriver().switchTo().window(parentWindowId);
+		Set<String> windowHandles = Driver.getDriver().getWindowHandles();
+		for (String handle : windowHandles) {
+		if(!handle.equals(parentWindowHandle)) {
+			Driver.getDriver().switchTo().window(handle);
+		}
+		}
+		
 	}
 
 	@When("Click on Rooms")

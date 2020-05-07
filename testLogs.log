@@ -1,1 +1,75 @@
-
+2020-05-07 18:40:42 INFO  FlightSearchStepDefs:23 - Navigating to a TravelocityCom home page
+2020-05-07 18:41:19 INFO  FlightSearchStepDefs:23 - Navigating to a TravelocityCom home page
+2020-05-07 18:41:51 INFO  FlightSearchStepDefs:46 - Navigating to flights page
+2020-05-07 18:42:09 INFO  FlightSearchStepDefs:46 - Navigating to flights page
+2020-05-07 18:43:09 INFO  FlightSearchStepDefs:46 - Navigating to flights page
+2020-05-07 18:43:58 INFO  FlightSearchStepDefs:46 - Navigating to flights page
+2020-05-07 18:44:35 INFO  FlightSearchStepDefs:46 - Navigating to flights page
+2020-05-07 18:45:02 INFO  FlightSearchStepDefs:46 - Navigating to flights page
+2020-05-07 18:45:25 INFO  FlightSearchStepDefs:46 - Navigating to flights page
+2020-05-07 18:45:56 INFO  FlightSearchStepDefs:23 - Navigating to a TravelocityCom home page
+2020-05-07 18:45:56 INFO  FlightSearchStepDefs:31 - Clicking on Going to field
+2020-05-07 18:45:56 INFO  FlightSearchStepDefs:40 - Entering The Monterey Hotel on Going to field
+2020-05-07 18:45:57 INFO  FlightSearchStepDefs:42 - Choose from given choices
+2020-05-07 18:45:58 INFO  FlightSearchStepDefs:52 - Clicking on Check in field
+2020-05-07 18:45:58 INFO  FlightSearchStepDefs:60 - Setting date on Check in field --> June 16,2020
+2020-05-07 18:45:58 INFO  FlightSearchStepDefs:69 - Clicking on Check out field
+2020-05-07 18:45:58 INFO  FlightSearchStepDefs:77 - Setting date on Check out field --> June 26,2020
+2020-05-07 18:45:59 INFO  FlightSearchStepDefs:114 - Clicking on search button
+2020-05-07 18:46:35 INFO  FlightSearchStepDefs:23 - Navigating to a TravelocityCom home page
+2020-05-07 18:46:35 INFO  FlightSearchStepDefs:31 - Clicking on Going to field
+2020-05-07 18:46:41 INFO  FlightSearchStepDefs:40 - Entering Florida on Going to field
+2020-05-07 18:46:42 INFO  FlightSearchStepDefs:42 - Choose from given choices
+2020-05-07 18:46:42 INFO  FlightSearchStepDefs:52 - Clicking on Check in field
+2020-05-07 18:46:43 INFO  FlightSearchStepDefs:60 - Setting date on Check in field --> June 16,2020
+2020-05-07 18:46:43 INFO  FlightSearchStepDefs:69 - Clicking on Check out field
+2020-05-07 18:46:43 INFO  FlightSearchStepDefs:77 - Setting date on Check out field --> June 26,2020
+2020-05-07 18:46:44 INFO  FlightSearchStepDefs:86 - Selecting quantity of the rooms as 1 room
+2020-05-07 18:46:44 INFO  FlightSearchStepDefs:93 - Selecting quantity of the adults as 3 adults
+2020-05-07 18:46:44 INFO  FlightSearchStepDefs:100 - Selecting quantity of the children as 1 child
+2020-05-07 18:46:45 INFO  FlightSearchStepDefs:107 - Selecting child age as 5 year old
+2020-05-07 18:46:45 INFO  FlightSearchStepDefs:114 - Clicking on search button
+2020-05-07 18:47:05 INFO  FlightSearchStepDefs:137 - Getting the Hotels Result page title
+2020-05-07 18:47:05 INFO  FlightSearchStepDefs:138 - Verifying the title
+2020-05-07 18:47:15 INFO  FlightSearchStepDefs:143 - Title Verification passed
+2020-05-07 18:47:15 INFO  FlightSearchStepDefs:156 - Verifying the field should contains Florida
+2020-05-07 18:47:15 INFO  FlightSearchStepDefs:159 - Verification passed
+2020-05-07 18:47:15 INFO  FlightSearchStepDefs:174 - Verifying the Check in field should contains Jun 16
+2020-05-07 18:47:15 INFO  FlightSearchStepDefs:177 - Verification passed
+2020-05-07 18:47:15 INFO  FlightSearchStepDefs:193 - Verifying the Check out field should contains Jun 26
+2020-05-07 18:47:15 INFO  FlightSearchStepDefs:196 - Verification passed
+2020-05-07 18:47:15 INFO  FlightSearchStepDefs:211 - Verifying the Check out field should contains 1 room, 4 guests (3 adults and 1 child)
+2020-05-07 18:47:15 INFO  FlightSearchStepDefs:214 - Verification passed
+2020-05-07 18:47:25 INFO  FlightSearchStepDefs:23 - Navigating to a TravelocityCom home page
+2020-05-07 18:47:25 INFO  FlightSearchStepDefs:31 - Clicking on Going to field
+2020-05-07 18:47:27 INFO  FlightSearchStepDefs:40 - Entering Florida on Going to field
+2020-05-07 18:47:30 INFO  FlightSearchStepDefs:42 - Choose from given choices
+2020-05-07 18:47:30 INFO  FlightSearchStepDefs:52 - Clicking on Check in field
+2020-05-07 18:47:31 INFO  FlightSearchStepDefs:60 - Setting date on Check in field --> June 16,2020
+2020-05-07 18:47:31 INFO  FlightSearchStepDefs:69 - Clicking on Check out field
+2020-05-07 18:47:31 INFO  FlightSearchStepDefs:77 - Setting date on Check out field --> June 26,2020
+2020-05-07 18:47:32 INFO  FlightSearchStepDefs:86 - Selecting quantity of the rooms as 1 room
+2020-05-07 18:47:32 INFO  FlightSearchStepDefs:93 - Selecting quantity of the adults as 3 adults
+2020-05-07 18:47:32 INFO  FlightSearchStepDefs:100 - Selecting quantity of the children as 1 child
+2020-05-07 18:47:32 INFO  FlightSearchStepDefs:107 - Selecting child age as 5 year old
+2020-05-07 18:47:33 INFO  FlightSearchStepDefs:227 - Check Add a flight checkbox
+2020-05-07 18:47:33 INFO  FlightSearchStepDefs:229 - Enter flying from destination by choosing from given choises
+2020-05-07 18:47:34 INFO  FlightSearchStepDefs:114 - Clicking on search button
+2020-05-07 18:47:43 INFO  FlightSearchStepDefs:137 - Getting the Hotels Result page title
+2020-05-07 18:47:43 INFO  FlightSearchStepDefs:138 - Verifying the title
+2020-05-07 18:47:55 INFO  FlightSearchStepDefs:143 - Title Verification passed
+2020-05-07 18:47:55 INFO  FlightSearchStepDefs:238 - Verifying the origin field should contains New York
+2020-05-07 18:47:59 INFO  FlightSearchStepDefs:241 - Verification passed
+2020-05-07 18:47:59 INFO  FlightSearchStepDefs:254 - Verifying the destination field should contains Florida
+2020-05-07 18:47:59 INFO  FlightSearchStepDefs:257 - Verification passed
+2020-05-07 18:47:59 INFO  FlightSearchStepDefs:270 - Verifying the departing field has 6/16/2020
+2020-05-07 18:47:59 INFO  FlightSearchStepDefs:273 - Verification passed
+2020-05-07 18:47:59 INFO  FlightSearchStepDefs:286 - Verifying the returning field has 6/26/2020
+2020-05-07 18:47:59 INFO  FlightSearchStepDefs:289 - Verification passed
+2020-05-07 18:47:59 INFO  FlightSearchStepDefs:302 - Verifying the info about 1 room, 3 adults and 1 child are present
+2020-05-07 18:47:59 INFO  FlightSearchStepDefs:304 - Verification the room quantity is 1
+2020-05-07 18:47:59 INFO  FlightSearchStepDefs:306 - Verification passed
+2020-05-07 18:48:02 INFO  FlightSearchStepDefs:318 - Verification the adult quantity is 3
+2020-05-07 18:48:02 INFO  FlightSearchStepDefs:320 - Verification passed
+2020-05-07 18:48:02 INFO  FlightSearchStepDefs:321 - Verification the child quantity is 1
+2020-05-07 18:48:02 INFO  FlightSearchStepDefs:323 - Verification passed

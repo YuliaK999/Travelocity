@@ -18,12 +18,6 @@ public class Hotels {
 
 	Logger logger = LoggerUtils.getLogger(FlightSearchStepDefs.class);
 
-	@Given("I am on the TravelocityCom homepage")
-	public void i_am_on_the_TravelocityCom_homepage() {
-		Driver.getDriver().get(ConfigReader.getConfiguration("url"));
-		logger.info("Navigating to a TravelocityCom home page");
-	}
-
 	@Given("Click on hotels")
 	public void click_on_hotels() {
 		HotelsPage hotelspage = new HotelsPage();
@@ -53,21 +47,6 @@ public class Hotels {
 	}
 	
 	
-	@And("Click on Going to field")
-	public void click_on_Going_to_field() {
-		HotelsPage hotelspage = new HotelsPage();
-		logger.info("Clicking on Going to field");
-		hotelspage.goingToField.click();
-		BrowserUtilities.waitFor(3);
-	}
-
-	@And("Enter {string} destination")
-	public void enter_destination(String destination) {
-		HotelsPage hotelspage = new HotelsPage();
-		logger.info("Entering " + destination + " on Going to field");
-		hotelspage.destenationField.sendKeys(destination + Keys.ENTER);
-		BrowserUtilities.waitFor(3);
-	}
 
 	@Then("Destination field should contain {string}")
 	public void destination_field_should_contain(String destination) {
@@ -85,14 +64,6 @@ public class Hotels {
 		}
 	}
 	
-	@And("Click on Check in field")
-	public void click_on_Check_in_field() {
-		HotelsPage hotelspage = new HotelsPage();
-		logger.info("Clicking on Check in field");
-		hotelspage.checkInField.click();
-		BrowserUtilities.waitFor(5);
-	}
-
 	@And("Set {string} {int} {int} date to Check in field")
 	public void set_date_to_Check_in_field(String string, Integer int1, Integer int2) {
 		HotelsPage hotelspage = new HotelsPage();
@@ -107,34 +78,7 @@ public class Hotels {
 		//BrowserUtilities.waitFor(3);
 	}
 
-	@Then("Check in field should contain {string} {int}")
-	public void check_in_field_should_contain(String string, Integer int1) {
-		HotelsPage hotelspage = new HotelsPage();
-		String expected = string+int1;
-	    String actual = hotelspage.checkInField.getText();
-	    logger.info("Verifying the Check in field should contains " + string+int1);
-		try {
-			assertTrue(actual.contains(expected));
-			logger.info("Verification passed");
-
-		} catch (AssertionError e) {
-
-			logger.error("Verification failed");
-			logger.error(e.toString());
-			throw e; // re-throw my error so that my test fails
-		}
-	    
-	}
-	
-	
-	@And("Click on Check out field")
-	public void click_on_Check_out_field() {
-		HotelsPage hotelspage = new HotelsPage();
-		logger.info("Clicking on Check out field");
-		hotelspage.checkOutField.click();
-		BrowserUtilities.waitFor(3);
-	}
-
+		
 	@And("Set {string} {int} {int} date to Check out field")
 	public void set_date_to_Check_out_field(String string, Integer int1, Integer int2) {
 		HotelsPage hotelspage = new HotelsPage();
@@ -150,25 +94,6 @@ public class Hotels {
 		//BrowserUtilities.waitFor(3);
 	}
 
-	@Then("Check out field should contain {string} {int}")
-	public void check_out_field_should_contain(String string, Integer int1) {
-		HotelsPage hotelspage = new HotelsPage();
-		String expected = string+int1;
-		String actual = hotelspage.checkOutField.getText();
-	    logger.info("Verifying the Check out field should contains " + string+int1);
-		try {
-			assertTrue(actual.contains(expected));
-			logger.info("Verification passed");
-
-		} catch (AssertionError e) {
-
-			logger.error("Verification failed");
-			logger.error(e.toString());
-			throw e; // re-throw my error so that my test fails
-		}
-	}
-	
-	
 	@And("Click on guest field")
 	public void click_on_guest_field() {
 		HotelsPage hotelspage = new HotelsPage();
@@ -237,32 +162,6 @@ public class Hotels {
 		BrowserUtilities.waitFor(3);
 	}
 
-	@Then("Verify total rooms and guests")
-	public void verify_total_rooms_and_guests() {
-		HotelsPage hotelspage = new HotelsPage();
-		String expected = "2 rooms, 3 guests";
-		String actual = hotelspage.guestField.getAttribute("value");
-		System.out.println(actual);
-	    logger.info("Verifying the Check out field should contains 2 rooms, 3 guests");
-		try {
-			assertTrue(actual.contains(expected));
-			logger.info("Verification passed");
-
-		} catch (AssertionError e) {
-
-			logger.error("Verification failed");
-			logger.error(e.toString());
-			throw e; // re-throw my error so that my test fails
-		}
-	}
-	
-	@Then("Click Search button")
-	public void click_Search_button() {
-		HotelsPage hotelspage = new HotelsPage();
-		logger.info("Clicking on search button");
-		hotelspage.searchButton.click();
-		BrowserUtilities.waitFor(10);
-	}
 
 	@Then("The hotels page title should be Florida, United States of America Hotel Search Results")
 	public void the_hotels_page_title_should_be_Florida_United_States_of_America_Hotel_Search_Results() {
