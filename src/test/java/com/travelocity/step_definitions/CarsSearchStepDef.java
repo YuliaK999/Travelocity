@@ -2,6 +2,7 @@ package com.travelocity.step_definitions;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
 import com.travelocity.utilities.BrowserUtilities;
 
 import com.travelocity.utilities.Driver;
@@ -10,6 +11,7 @@ import com.travelocity.utilities.LoggerUtils;
 import static org.junit.Assert.assertEquals;
 
 import org.apache.log4j.Logger;
+import org.junit.Assert;
 import org.openqa.selenium.Keys;
 
 import com.travelocity.pages.CarPage;
@@ -78,7 +80,7 @@ public void click_on_Drop_off() {
 public void enter_as_a_drop_off_location(String string) {
 	CarPage carpage = new CarPage();
 	logger.info("Entering San as drop off location");
-	carpage.carDropingOff.sendKeys("San");
+	carpage.carDropingOff.sendKeys(string);
 	BrowserUtilities.waitFor(3);
 	carpage.carDropingOff.sendKeys("" + Keys.ARROW_DOWN + Keys.ENTER);
 	
@@ -91,5 +93,57 @@ public void dropping_off_field_should_contain(String string) {
 	 logger.info("Verifiyingdrop off location contaons San Francisco");
 	 carpage.carDropingOff.getText().contains("San Francisco");
 }
+
+
+@When("User click on {string} as pick up location")
+public void user_click_on_as_pick_up_location(String string) {
+	CarPage carpage = new CarPage();
+	carpage.carPickingUp.sendKeys(string);
+}
+
+@When("User click on {string} as drop off location")
+public void user_click_on_as_drop_off_location(String string) {
+	CarPage carpage = new CarPage();
+	carpage.carDropingOff.sendKeys(string);
+}
+
+@When("User pick {string} as pick up date")
+public void user_pick_as_pick_up_date(String string) {
+	CarPage carpage = new CarPage();
+	carpage.carPickUpDate.sendKeys(string);
+}
+
+@When("User click {string} as pick up time")
+public void user_click_as_pick_up_time(String string) {
+	CarPage carpage = new CarPage();
+	carpage.carSelectPickUpTime.sendKeys(string);
+}
+
+@When("User pick {string} as drop off date")
+public void user_pick_as_drop_off_date(String string) {
+	CarPage carpage = new CarPage();
+	carpage.carDropOffDate.sendKeys(string);
+}
+
+@When("User pick {string} as drop off time")
+public void user_pick_as_drop_off_time(String string) {
+	CarPage carpage = new CarPage();
+	carpage.carSelectDropOffTime.sendKeys(string);
+}
+
+@Then("User click on Search button")
+public void user_click_on_Search_button() {
+	CarPage carpage = new CarPage();
+	carpage.carsSearhButton.click();
+}
+
+@Then("User verify page title")
+public void user_verify_page_title() {
+	CarPage carpage = new CarPage();
+	carpage.carsSearhButton.click();
+    Assert.assertTrue(Driver.getDriver().getTitle().contains("Rental"));
+	
+}
+
 
 }

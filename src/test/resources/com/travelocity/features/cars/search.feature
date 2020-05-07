@@ -21,4 +21,17 @@ Feature: Cars search functionality
 	And Enter "San" as a drop off location
 	Then Dropping off field should contain "San Francisco"
 	
+	 Scenario:
+    When User click on "Istanbul" as pick up location
+    When  User click on "Izmir" as drop off location 
+    And User pick "05/20/2020" as pick up date
+    And User click "11:00AM" as pick up time
+    And User pick "05/26/2020" as drop off date
+    And User pick "01:00PM" as drop off time
+    Then User click on Search button
+    Then User verify page title
+    
+	
+	
+	
 

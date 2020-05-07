@@ -14,13 +14,13 @@ import io.cucumber.junit.CucumberOptions;
 		},
 					
 
-		tags = "@test", // "@smoke and @test"
+		tags = "tests", // "@smoke and @test"
 		features = "src/test/resources/com/travelocity/features",
 		glue = "com/travelocity/step_definitions"
 		,strict = true
 //		,dryRun = true
 		,monochrome =true
-		,stepNotifications = true
+//		,stepNotifications = true
 //		,snippets = SnippetType.CAMELCASE
 		)
 public class CukeRunner {
