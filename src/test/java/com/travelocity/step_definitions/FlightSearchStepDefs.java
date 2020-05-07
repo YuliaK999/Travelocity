@@ -70,8 +70,8 @@ public class FlightSearchStepDefs {
 	@When("I type a keyword into Flying from field")
 	public void i_type_a_keyword_into_Flying_from_field() {
 		FlightsPage flightsPage = new FlightsPage();
-		keyword = flightsPage.generateKeyword();
-		flightsPage.flyingFromAirport.sendKeys(keyword);
+		//keyword = flightsPage.generateKeyword();
+		flightsPage.flyingFromAirport.sendKeys("New York");
 	}
 
 	@Then("I should see suggested options in the dropdown")
@@ -153,18 +153,18 @@ public class FlightSearchStepDefs {
 	@When("I select {string} as a trip type")
 	public void i_select_as_a_trip_type(String string) {
 		FlightsPage flightsPage = new FlightsPage();
+		//flightsPage.setTripType(string).click();
 		switch(string) {
-		case "Roundtrip":
-			BrowserUtilities.waitFor(10);
+		case "Roundtrip": 
 			flightsPage.roundTrip.click();
 			break;
-		case "One Way":	
+		case "One way":
 			flightsPage.oneWay.click();
 			break;
-		case "Multy-City":	
+		case "Multy-city":
 			flightsPage.multiCity.click();
 			break;
-		}
+		}	
 		tripType = string;
 	}
 
@@ -174,21 +174,23 @@ public class FlightSearchStepDefs {
 		Faker f = new Faker();
 		switch(tripType) {
 		case "Roundtrip": 
-			flightsPage.flyingFromAirport.sendKeys(f.aviation().airport()); //airport from Faker class
-			flightsPage.flyingToAirport.sendKeys(f.aviation().airport()); //airport from Faker class
-			flightsPage.departingDate.click();
-			flightsPage.setDate("2020", "9", "8").click();
-			flightsPage.returningDate.click();
-			flightsPage.setDate("2020", "9", "15").click();
-			BrowserUtilities.selectByVisibleText(flightsPage.adultsNumber, new Random().nextInt(6)+1+""); //random number from 1 to 6
+			flightsPage.flyingFromAirport.sendKeys("New York");//(f.aviation().airport()); //airport from Faker class
+			flightsPage.flyingToAirport.sendKeys("Istanbul");//(f.aviation().airport()); //airport from Faker class
+			//flightsPage.departingDate.click();
+			flightsPage.departingDate.sendKeys("05/10/2020");
+			//flightsPage.setDate("2020", "5", "10").click();
+			//flightsPage.returningDate.click();
+			//flightsPage.returningDate.sendKeys("05/15/2020");
+			//flightsPage.setDate2("2020", "5", "15").click();
+			//BrowserUtilities.selectByVisibleText(flightsPage.adultsNumber, new Random().nextInt(6)+1+""); //random number from 1 to 6
 			BrowserUtilities.selectByValue(flightsPage.childrenNumber,"0");
 			break;
-		case "One-way": 
-			flightsPage.flyingFromAirport.sendKeys(f.aviation().airport()); //airport from Faker class
-			flightsPage.flyingToAirport.sendKeys(f.aviation().airport()); //airport from Faker class
-			flightsPage.departingDate.click();
-			flightsPage.setDate("2020", "9", "8").click();
-			BrowserUtilities.selectByVisibleText(flightsPage.adultsNumber, new Random().nextInt(6)+1+""); //random number from 1 to 6
+		case "One way": 
+			flightsPage.flyingFromAirport.sendKeys("New York");//(f.aviation().airport()); //airport from Faker class
+			flightsPage.flyingToAirport.sendKeys("Istanbul");//(f.aviation().airport()); //airport from Faker class
+			flightsPage.departingDateOneWay.click();
+			flightsPage.setDate("2020", "5", "10").click();
+			//BrowserUtilities.selectByVisibleText(flightsPage.adultsNumber, new Random().nextInt(6)+1+""); //random number from 1 to 6
 			BrowserUtilities.selectByValue(flightsPage.childrenNumber,"0");
 			break;
 		case "Multi-city":
@@ -196,13 +198,13 @@ public class FlightSearchStepDefs {
 			flightsPage.flyingFromAirport.sendKeys(f.aviation().airport()); //airport from Faker class
 			flightsPage.flyingToAirport.sendKeys(transferAirport); //transferAirport
 			flightsPage.departingDate.click();
-			flightsPage.setDate("2020", "9", "8").click();
+			flightsPage.setDate("2020", "5", "10").click();
 			BrowserUtilities.selectByVisibleText(flightsPage.adultsNumber, new Random().nextInt(6)+1+""); //
 			BrowserUtilities.selectByValue(flightsPage.childrenNumber,"0");
 			flightsPage.flyingFromAirport2.sendKeys(transferAirport); //airport from Faker class
 			flightsPage.flyingToAirport2.sendKeys(f.aviation().airport()); //transferAirport
 			flightsPage.departingDate2.click();
-			flightsPage.setDate("2020", "9", "15").click();
+			flightsPage.setDate("2020", "5", "15").click();
 			break;
 		}
 		
@@ -211,6 +213,7 @@ public class FlightSearchStepDefs {
 	@Then("Flight tickets of corresponding trip type should be displayed")
 	public void flight_tickets_of_corresponding_trip_type_should_be_displayed(){
 		FlightResultPage flightResultPage = new FlightResultPage();
+		BrowserUtilities.waitFor(10);
 		String actual = flightResultPage.typeOfTrip.getText();
 		Assert.assertEquals(tripType.toLowerCase(), actual);
 	}
@@ -218,14 +221,12 @@ public class FlightSearchStepDefs {
 	@When("I enter {string} as a departing city")
 	public void i_enter_as_a_departing_city(String departingCity) {
 		FlightsPage flightsPage = new FlightsPage();
-		//BrowserUtilities.waitFor(10);
-		//flightsPage.flyingFromAirport.sendKeys(departingCity);
+		flightsPage.flyingFromAirport.sendKeys(departingCity);
 	}
 
 	@When("I enter {string} as an arrival city")
 	public void i_enter_as_an_arrival_city(String arrivalCity) {
 		FlightsPage flightsPage = new FlightsPage();
-		flightsPage.flyingToAirport.click();
 		flightsPage.flyingToAirport.sendKeys(arrivalCity);
 	}
 
@@ -239,12 +240,11 @@ public class FlightSearchStepDefs {
 	@Then("Flight tickets should contain {string}, {string}, {string} as departure airports")
 	public void flight_tickets_should_contain_as_departure_airports(String da1, String da2, String da3) {
 		String actualDA="";
-		Boolean b;
 		FlightResultPage flightResultPage = new FlightResultPage();
 		for (WebElement da : flightResultPage.departureAirports)
 			actualDA = da.getText().substring(0, 4);
-		   	b = actualDA.equals(da1) || actualDA.equals(da2) || actualDA.equals(da3);
-		   	Assert.assertTrue(b);
+			System.out.println(actualDA);
+		   	Assert.assertTrue(actualDA.equals(da1) || actualDA.equals(da2) || actualDA.equals(da3));
 	}
 
 	
@@ -253,7 +253,7 @@ public class FlightSearchStepDefs {
 		FlightsPage flightsPage = new FlightsPage();
 		
 		ExcelUtils sheet = new ExcelUtils("src/test/resources/com/travelocity/test-data/1.xlsx", "Sheet1");
-				
+		
 		List<Map<String, String>> allRows = sheet.getDataAsList();
 		
 		for (int i = 0; i < allRows.size(); i++) {
@@ -262,9 +262,9 @@ public class FlightSearchStepDefs {
 			  
 			if(row.get("Execute").equalsIgnoreCase("Y")) {
 				
-				//!!!flightsPage.flyingFromAirport.sendKeys(row.get("Flying from"));
+				flightsPage.flyingFromAirport.sendKeys(row.get("Flying from"));
 				flightsPage.flyingToAirport.sendKeys(row.get("Flying to"));
-				flightsPage.departingDate.sendKeys(row.get("Departing"));
+				flightsPage.departingDateOneWay.sendKeys(row.get("Departing"));
 			}	
 		}	
 	}
@@ -273,7 +273,7 @@ public class FlightSearchStepDefs {
 	public void the_details_of_the_cheapest_flight_ticket_should_be_correct() {
 		FlightResultPage flightResultPage = new FlightResultPage();
 		
-		ExcelUtils sheet = new ExcelUtils("src/test/resources/io/duotech/test-data/1.xlsx", "Sheet1");
+		ExcelUtils sheet = new ExcelUtils("src/test/resources/com/travelocity/test-data/1.xlsx", "Sheet1");
 				
 		List<Map<String, String>> allRows = sheet.getDataAsList();
 		

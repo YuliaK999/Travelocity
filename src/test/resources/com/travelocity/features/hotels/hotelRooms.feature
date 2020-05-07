@@ -6,13 +6,10 @@ Feature: Hotel rooms
     When Click on hotels
    	And Click on Going to field
 		And Enter "The Monterey Hotel" destination
-		And Click on Check in field
-		And Set "May" 10 2020 date to Check in field
-		And Click on Check out field
-		And Set "May" 11 2020 date to Check out field
-#		And Click on guest field
-#		And Increase the adult in first room
-#		And Click Done button
+#		And Click on Check in field
+#		And Set "May" 10 2020 date to Check in field
+#		And Click on Check out field
+#		And Set "May" 11 2020 date to Check out field
     And Click Search button
     And Click on "The Monterey Hotel" hotel name
     And Click on Rooms

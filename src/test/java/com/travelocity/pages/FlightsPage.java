@@ -45,6 +45,9 @@ public class FlightsPage {
 	@FindBy(id = "flight-departing-hp-flight")
 	public WebElement departingDate;
 	
+	@FindBy(id = "flight-departing-single-hp-flight")
+	public WebElement departingDateOneWay;
+	
 	@FindBy(id = "flight-2-departing-hp-flight")
 	public WebElement departingDate2;
 
@@ -86,8 +89,8 @@ public class FlightsPage {
 	
 	@FindBy(id = "flight-type-one-way-label-hp-flight")
 	public WebElement oneWay;
-	
-	@FindBy(id = "flight-type-roundtrip-hp-flight")
+		
+	@FindBy(id = "flight-type-roundtrip-label-hp-flight")
 	public WebElement roundTrip;
 	
 	@FindBy(id = "flight-type-multi-dest-label-hp-flight")
@@ -97,7 +100,7 @@ public class FlightsPage {
 	public List<WebElement> childAgeList;
 	
 	public WebElement setTripType(String tripType) {
-		String customXpath = "//input[@data-gcw-sub-nav-option-name='" + tripType + "']";
+		String customXpath = "//span[.='"+ tripType + "']";
 		return Driver.getDriver().findElement(By.xpath(customXpath));
 	}
 	
@@ -153,11 +156,8 @@ public class FlightsPage {
 
 		String customXpath = "//button[@data-year='" + year + "'][@data-month='" + month + "'][@data-day='" + day
 				+ "']";
-		while (Driver.getDriver().findElement(By.xpath(customXpath)).isDisplayed()){
-			Driver.getDriver()
-					.findElement(By.xpath(
-							"//button[@class='datepicker-paging datepicker-next btn-paging btn-secondary next']"))
-					.click();
+		while (!Driver.getDriver().findElement(By.xpath(customXpath)).isDisplayed()){
+				rightArrow.click();
 		}
 		return Driver.getDriver().findElement(By.xpath(customXpath));
 	}

@@ -8,10 +8,9 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith (Cucumber.class)
 @CucumberOptions (
 		
-		plugin = {
+		plugin = {"pretty",
 				"html:target/built-in-html-report",
-				"json:target/Cucumber.json "
-		
+				"json:target/Cucumber.json"
 		},
 					
 

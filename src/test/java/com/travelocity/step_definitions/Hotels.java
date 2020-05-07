@@ -97,12 +97,14 @@ public class Hotels {
 	public void set_date_to_Check_in_field(String string, Integer int1, Integer int2) {
 		HotelsPage hotelspage = new HotelsPage();
 		logger.info("Setting " + string+int1+int2 + " on Check in field");
-		JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
-		js.executeScript("arguments[0].click()", hotelspage.setDate2(string, int1, int2));
-		BrowserUtilities.waitFor(3);
+		//JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
+		//js.executeScript("arguments[0].click()", hotelspage.setDate(string, int1, int2));
+		//BrowserUtilities.waitFor(3);
+		hotelspage.checkInField.sendKeys("May 10");
 		logger.info("Clicking Done button");
-		js.executeScript("arguments[0].click()",hotelspage.calendarDoneButton);
-		BrowserUtilities.waitFor(3);
+		//js.executeScript("arguments[0].click()",hotelspage.calendarDoneButton);
+		hotelspage.calendarDoneButton.click();
+		//BrowserUtilities.waitFor(3);
 	}
 
 	@Then("Check in field should contain {string} {int}")
@@ -137,12 +139,15 @@ public class Hotels {
 	public void set_date_to_Check_out_field(String string, Integer int1, Integer int2) {
 		HotelsPage hotelspage = new HotelsPage();
 		logger.info("Setting " + string+int1+int2 + " on Check out field");
-		JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
-		js.executeScript("arguments[0].click()", hotelspage.setDate(string, int1, int2));
-		BrowserUtilities.waitFor(3);
+		//JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
+		//js.executeScript("arguments[0].click()", hotelspage.setDate(string, int1, int2));
+		//BrowserUtilities.waitFor(3);
+		hotelspage.checkOutField.sendKeys("May 15");
 		logger.info("Clicking Done button");
-		js.executeScript("arguments[0].click()",hotelspage.calendarDoneButton);
-		BrowserUtilities.waitFor(3);
+		hotelspage.calendarDoneButton.click();
+		logger.info("Clicking Done button");
+		//js.executeScript("arguments[0].click()",hotelspage.calendarDoneButton);
+		//BrowserUtilities.waitFor(3);
 	}
 
 	@Then("Check out field should contain {string} {int}")
