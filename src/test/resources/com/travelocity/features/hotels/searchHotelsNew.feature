@@ -1,11 +1,11 @@
-@SecondSprint
+
 Feature: Hotel search functionality
 
   Background: 
     Given I am on the TravelocityCom homepage
 
 
-	
+@smoke	
   Scenario: Verify destenation field functionality 
   And Click on Going to field
 	And Enter "Florida" destination
