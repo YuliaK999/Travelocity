@@ -11,7 +11,7 @@ Feature: Verify Flights main page
   Scenario: Verify dropdown suggestions by keyword
     When I type a keyword into Flying from field
     Then I should see suggested options in the dropdown
-
+  @smoke
   Scenario: Verify Clear button
     When I type a keyword into Flying from field
     And I click on Clear button
