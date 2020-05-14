@@ -2,7 +2,7 @@ Feature: Verify Flights main page
 
   Background: 
     Given I am on the flights page
-	
+  @smoke	
   Scenario: Verify flights page
     When I click on Hotels button
     And I click on Flights button
