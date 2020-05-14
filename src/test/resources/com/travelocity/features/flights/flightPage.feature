@@ -26,7 +26,7 @@ Feature: Verify Flights main page
  		When I select 2 children
  		Then 2 options to enter children age shoud be displayed
  		
- @SecondSprint		
+ @smoke		
   Scenario: Verify Roundtrip trip type
  	  When I select "Roundtrip" as a trip type
  	  And I enter random flight details
