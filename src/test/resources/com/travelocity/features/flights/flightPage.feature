@@ -2,6 +2,7 @@ Feature: Verify Flights main page
 
   Background: 
     Given I am on the flights page
+
 @smoke	
   Scenario: Verify flights page
     When I click on Hotels button
@@ -11,6 +12,7 @@ Feature: Verify Flights main page
   Scenario: Verify dropdown suggestions by keyword
     When I type a keyword into Flying from field
     Then I should see suggested options in the dropdown
+
 @regression
   Scenario: Verify Clear button
     When I type a keyword into Flying from field
@@ -26,6 +28,7 @@ Feature: Verify Flights main page
  		When I select 2 children
  		Then 2 options to enter children age shoud be displayed
  		
+
 @regression		
   Scenario: Verify Roundtrip trip type
  	  When I select "Roundtrip" as a trip type

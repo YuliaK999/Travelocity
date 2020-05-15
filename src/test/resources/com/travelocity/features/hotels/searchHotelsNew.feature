@@ -5,7 +5,9 @@ Feature: Hotel search functionality
     Given I am on the TravelocityCom homepage
 
 
-	@smoke
+
+@smoke	
+
   Scenario: Verify destenation field functionality 
   And Click on Going to field
 	And Enter "Florida" destination
