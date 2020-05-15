@@ -1,11 +1,11 @@
-@SecondSprint
+
 Feature: Hotel search functionality
 
   Background: 
     Given I am on the TravelocityCom homepage
 
 
-	
+	@smoke
   Scenario: Verify destenation field functionality 
   And Click on Going to field
 	And Enter "Florida" destination
@@ -24,6 +24,7 @@ Feature: Hotel search functionality
 	Then Check out field should contain "Jun " 26
 	Then Verify total rooms and guests 
 	
+	@smoke
 	Scenario: Verify search functionality with add flight
 	And Click on Going to field
 	And Enter "Florida" destination

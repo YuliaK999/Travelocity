@@ -1,4 +1,4 @@
-@SecondSprint
+
 Feature: Car Search Functionality Using Data
   
 
@@ -8,7 +8,7 @@ Feature: Car Search Functionality Using Data
     When Click on cars
  
 
-  
+ @regression
    Scenario Outline: Verify Page Title Using Scenerio Outline
     When User click on "<Picking up>" as pick up location
     When User click on "<Drop off>" as drop off location

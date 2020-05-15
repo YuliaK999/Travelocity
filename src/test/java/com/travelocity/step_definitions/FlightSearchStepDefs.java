@@ -252,7 +252,7 @@ public class FlightSearchStepDefs {
 	public void i_enter_the_flight_details() {
 		FlightsPage flightsPage = new FlightsPage();
 		
-		ExcelUtils sheet = new ExcelUtils("src/test/resources/com/travelocity/test-data/1.xlsx", "Sheet1");
+		ExcelUtils sheet = new ExcelUtils("src/test/resources/com/travelocity/test-data/2.xlsx", "Sheet1");
 		
 		List<Map<String, String>> allRows = sheet.getDataAsList();
 		

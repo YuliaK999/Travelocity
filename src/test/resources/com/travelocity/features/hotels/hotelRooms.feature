@@ -1,6 +1,6 @@
 Feature: Hotel rooms
   
-@SecondSprint 
+@regression 
   Scenario: Verify hotel rooms
     Given I am on the TravelocityCom homepage
     When Click on Going to field

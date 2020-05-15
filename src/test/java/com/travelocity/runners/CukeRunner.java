@@ -14,7 +14,7 @@ import io.cucumber.junit.CucumberOptions;
 		},
 					
 
-		tags = "@SecondSprint", // "@smoke and @test"
+//		tags = "@test", // "@smoke and @test"
 		features = "src/test/resources/com/travelocity/features",
 		glue = "com/travelocity/step_definitions"
 		,strict = true
